@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Draw a Table</title>
+    <link rel="icon" type="images/png" href="img/table.png">
+    <link rel="stylesheet" href="assignment1.css">
+    
+</head>
+
+<body>
+    <div id="container1">
+
+        <div id="container">
+            <h1>MULTIPLICATION TABLE</h1>
+            <h2 id="myHeading">Assignment 1</h2>
+
+            <h3>Create Custom Multiplication Table</h3>
+            <label for="rows">Set Rows: </label>
+            <input type="number" id="rows" class="form-control form-control-sm" min="1" max="10" value="0">
+
+            <label for="cols">Set Columns: </label>
+            <input type="number" id="cols" class="form-control form-control-sm" min="1" max="10" value="0"><br />
+
+            <button type="button" id="btn" class="button" onclick="makeTable()">Click Here</button>
+
+            <div id="tableDiv"></div>
+        </div>
+    </div>
+
+    <footer>&copy; Carl Kevin Gasal - COMP125 - WINTER 2023</footer>
+    <script src="assignment1.js" defer></script>
+</body>
+
+</html>
