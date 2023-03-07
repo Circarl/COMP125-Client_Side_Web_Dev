@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="photoslide.css" />
+<script src="photoslide.js" defer></script>
+</head>
+<body>
+    <article>
+        <h1>Interactive Slideshow</h1>
+        <p>To view your slides:</p>
+        <ul>
+           <li>Click the Right or Left arrow buttons to move forward or backward through the image list.</li>
+           <li>Click the Play/Pause button to automatically move forward through the image list.</li>
+           <li>Click an image to view it in full screen mode.</li>
+        </ul>
+        
+        <div id="lightbox"></div>
+     </article>
+<div class="slideshow-container">
+  <a class="prev" onclick="plusSlides(-1)"> &lt; </a>
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 3</div>
+  <img src="/Assignment 2/assets/photo1.jpg" style="width:100%">
+  <div class="text">Caption Text</div>
+</div>
+<div class="mySlides fade">
+  <div class="numbertext">2 / 3</div>
+  <img src="/Assignment 2/assets/photo2.jpg" style="width:100%">
+  <div class="text">Caption Two</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 3</div>
+  <img src="/Assignment 2/assets/photo3.jpg" style="width:100%">
+  <div class="text">Caption Three</div>
+</div>
+
+
+<a class="next" onclick="plusSlides(1)"> &gt; </a>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+  </div>
+</body>
+</html> 
