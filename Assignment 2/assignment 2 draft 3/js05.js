@@ -94,80 +94,89 @@ function createLightbox() {
   }
 
   function createOverlay() {
-    let overlay = document.createElement("div");
-    overlay.id = "lbOverlay";
-
-    // Add the figure box to the overlay
-    let figureBox = document.createElement("figure");
-    overlay.appendChild(figureBox);
-
-    // Add the image to the figure box
-    let overlayImage = this.cloneNode("true");
-    figureBox.appendChild(overlayImage);
-
-    // Add the caption to the figure box
-    let overlayCaption = document.createElement("figcaption");
-    overlayCaption.textContent = this.alt;
-    figureBox.appendChild(overlayCaption);
-
-    let favoritesBtn = document.createElement("div");
-    let removeBtn = document.createElement("div"); //Define a variable to hold the array of selected images, and another variable to hold the favorites container element
-
-    favoritesBtn.addEventListener("click", addToFavorites); //event listener to the favorites button to handle adding images to the favorites:
-    removeBtn.addEventListener("click", removeFromFavorites);
-
-    favoritesBtn.classList.add("favorite-btn");
-    favoritesBtn.textContent = "Add to Favorites";
-    figureBox.appendChild(favoritesBtn);
-
-    removeBtn.classList.add("remove-btn");
-    removeBtn.textContent = "Remove";
-    overlayImage.appendChild(removeBtn);
-
-    // Add a close button to the overlay
-    let closeBox = document.createElement("div");
-    closeBox.id = "lbOverlayClose";
-    closeBox.innerHTML = "&times;";
-    closeBox.onclick = function () {
-      document.body.removeChild(overlay);
-    };
-    overlay.appendChild(closeBox);
-
-    document.body.appendChild(overlay);
-  }
+   let overlay = document.createElement("div");
+   overlay.id = "lbOverlay";
+ 
+   // Add the figure box to the overlay
+   let figureBox = document.createElement("figure");
+   overlay.appendChild(figureBox);
+ 
+   // Add the image to the figure box
+   let overlayImage = this.cloneNode(true);
+   figureBox.appendChild(overlayImage);
+ 
+   // Add the caption to the figure box
+   let overlayCaption = document.createElement("figcaption");
+   overlayCaption.textContent = this.alt;
+   figureBox.appendChild(overlayCaption);
+ 
+   // Add the favorites button and remove button to the figure box
+   let favoritesBtn = document.createElement("div");
+   favoritesBtn.classList.add("favorite-btn");
+   favoritesBtn.textContent = "Add to Favorites";
+   figureBox.appendChild(favoritesBtn);
+ 
+   let removeBtn = document.createElement("div");
+   removeBtn.classList.add("remove-btn");
+   removeBtn.textContent = "Remove";
+   figureBox.appendChild(removeBtn);
+ 
+   favoritesBtn.addEventListener("click", addToFavorites);
+   removeBtn.addEventListener("click", removeFromFavorites);
+ 
+   // Add a close button to the overlay
+   let closeBox = document.createElement("div");
+   closeBox.id = "lbOverlayClose";
+   closeBox.innerHTML = "&times;";
+   closeBox.onclick = function () {
+     document.body.removeChild(overlay);
+   };
+   overlay.appendChild(closeBox);
+ 
+   document.body.appendChild(overlay);
+ }
+ 
 
   let selectedImages = [];
   //ADD TO FAVORITES FUNCTION ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   //ADD TO FAVORITES FUNCTION
   function addToFavorites() {
-    let favoritesContainer = document.getElementById("favorites-container");
-    // Check if the maximum limit of 5 images is reached
-    if (favoritesContainer.childElementCount >= 5) {
-      alert("You can only add up to 5 images to favorites.");
-      return;
-    }
-
-    // Check if the image is already in the favorites
-    if (selectedImages.includes(this)) {
-      return;
-    }
-
-    // Create a new image element for the clicked image
-    let image = document.createElement("img");
-    image.src = this.src;
-    image.alt = this.alt;
-    selectedImages.push(this);
-    favoritesContainer.appendChild(image);
-
-    // Add a remove button to the image
-    let removeBtn = document.createElement("div");
-    removeBtn.classList.add("remove-btn");
-    removeBtn.textContent = "Remove";
-    image.appendChild(removeBtn);
-
-    // Add a click event listener to the remove button
-    removeBtn.addEventListener("click", removeFromFavorites);
-  }
+   let favoritesContainer = document.getElementById("favorites-container");
+   
+   // Add images from the imgFiles array to the container
+   if (selectedImages.length >= 5) {
+     alert("You can only add up to 5 images to favorites.");
+     return;
+   }
+ 
+   // check if the image is already in the favorites
+   if (selectedImages.includes(this)) {
+     return;
+   }
+ 
+   let image = document.createElement("img");
+   image.src = imgFiles[i];
+   image.alt = this.alt;
+ 
+   let container = document.createElement("div");
+   container.classList.add("image-container");
+ 
+   container.appendChild(image);
+ 
+   let addToFavoritesBtn = document.createElement("button");
+   addToFavoritesBtn.textContent = "Add to Favorites";
+   addToFavoritesBtn.addEventListener("click", addToFavorites);
+   container.appendChild(addToFavoritesBtn);
+ 
+   let removeBtn = document.createElement("button");
+   removeBtn.textContent = "Remove";
+   removeBtn.addEventListener("click", removeFromFavorites);
+   container.appendChild(removeBtn);
+ 
+   selectedImages.push(filename);
+   favoritesContainer.appendChild(container);
+ } 
+ 
 
   //REMOVE FROM FAVORITES FUNCTION
   function removeFromFavorites() {

@@ -1,0 +1,41 @@
+#slideshow-container {
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+    position: relative;
+    border: solid 1px red;
+  }
+  h1{
+    width: 800px;
+    padding: 20px;
+    margin: 0 auto;
+  }
+  #counter {
+    position: relative;
+    top: 30px;
+    left: 10px;
+    padding: 5px;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+  }
+  
+  #prev, #next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  #prev {
+    left: 0;
+  }
+  
+  #next {
+    right: 0;
+  }
+  
