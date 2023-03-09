@@ -207,42 +207,37 @@ div#lbOverlay div#lbOverlayClose:hover {
  }
  
  #lbOverlayFavorite {
-   position: absolute;
-   top: 10px;
+   position: relative;
+   top: 45px;
    right: 10px;
-   font-size: 24px;
+   padding: 8px 8px;
+   font-size: 14px;
    cursor: pointer;
-   color: #999;
-   z-index: 1
+   color: white;
+   left: 10px;
+   display: inline-flex;
+   align-items: center;
+   border-radius: 7px;
+   background-color: #008CBA;
+   text-decoration: none;
  } 
  #lbOverlayImageContainer {
-   position: relative;
+   position: hidden;
  }
  
- #lbOverlayFavorite {
-   position: relative;
-   color: grey;
-   font-size: 16px;
-   cursor: pointer;
-   width: 150px;
-   height: 150px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
- }
- 
- 
- #lbOverlayFavorite.favorited {
-   color: red;
+ #lbOverlayFavorite a {
+   color: white;
+   text-decoration: none;
+   font-size: 20px;
  }
  
  #lbFavoritesContainer {
-   height: 150px;
-   border: solid 1px red;
+   border: solid 1px blue;
    display: flex;
    flex-wrap: wrap;
    margin-top: 0px;
-   align-items: center;
+   align-content: space-between;
+    justify-content: space-around;
  }
  
  #lbFavoritesContainer img {
@@ -251,34 +246,16 @@ div#lbOverlay div#lbOverlayClose:hover {
    margin-right: 10px;
    margin-bottom: 10px;
    object-fit: contain;
+   align-content: space-between;
+    justify-content: space-around;
  }
- /* Button styles */
-.button3 {
-   background-color: white;
+ footer {
+   padding-top: 30px;
+   font-size: medium;
+   text-align: center;
    color: black;
-   border: 2px solid #f44336;
-   border-radius: 5px;
-   padding: 10px 20px;
-   font-size: 16px;
-   font-weight: bold;
-   text-decoration: none;
-   display: inline-block;
-   margin-top: 10px;
- }
- 
- .button3:hover {
-   background-color: #f44336;
-   color: white;
- }
- 
- /* Button container styles */
- .favorite-button-container {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   margin-top: 10px;
- }
- 
+   margin: 10px;
+}
  
  
 /* Keyframe animation for the opening of the modal window figure and caption */

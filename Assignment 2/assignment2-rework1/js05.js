@@ -90,23 +90,24 @@ function createLightbox() {
    // Add the figure box to the overlay
    let figureBox = document.createElement("figure");
    overlay.appendChild(figureBox);
+       // Add the favorite button to the figure box
+       let favoriteButton = document.createElement("a");
+       favoriteButton.href = "#";
+       favoriteButton.innerHTML = "Add to Favorites";
+       favoriteButton.id = "lbOverlayFavorite";
+       favoriteButton.addEventListener("click", addToFavorites);
+       figureBox.appendChild(favoriteButton);
  
    // Add the image to the figure box
    let overlayImage = this.cloneNode("true");
    figureBox.appendChild(overlayImage);
- 
+
    // Add the caption to the figure box
    let overlayCaption = document.createElement("figcaption");
    overlayCaption.textContent = this.alt;
    figureBox.appendChild(overlayCaption);
  
-   // Add the favorite button to the figure box
-   let favoriteButton = document.createElement("a");
-   favoriteButton.href = "#";
-   favoriteButton.innerHTML = "Add to Favorites";
-   favoriteButton.id = "lbOverlayFavorite";
-   favoriteButton.addEventListener("click", addToFavorites);
-   figureBox.appendChild(favoriteButton);
+
  
    // Add a close button to the overlay
    let closeBox = document.createElement("div");
@@ -152,20 +153,13 @@ function addToFavorites(event) {
      matchingImage.parentNode.removeChild(matchingImage);
    }
    
-// Update the favorite button UI
-let favoriteButton = document.querySelector("#button3");
-if (!isAlreadyFavorite) {
-  favoriteButton.innerHTML = "Remove from Favorites";
-} else {
-  favoriteButton.innerHTML = "Add to Favorites";
-}
-
-// Remove any existing click event handler on the button
-favoriteButton.removeEventListener("click", addToFavorites);
-
-// Add a new click event handler that calls addToFavorites
-favoriteButton.addEventListener("click", addToFavorites.bind(null, event));
-
+   // Update the favorite button UI
+   let favoriteButton = event.target;
+   if (!isAlreadyFavorite) {
+     favoriteButton.innerHTML = "Remove from Favorites";
+   } else {
+     favoriteButton.innerHTML = "Add to Favorites";
+   }
  }
  
  
