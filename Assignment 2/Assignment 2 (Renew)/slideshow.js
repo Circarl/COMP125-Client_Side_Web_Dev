@@ -6,6 +6,8 @@ let slideshowImage = document.getElementById("slideshow-image");
 let counter = document.getElementById("counter");
 let prev = document.getElementById("prev");
 let next = document.getElementById("next");
+let modal = document.getElementById("modal");
+let modalImage = document.getElementById("modal-image");
 
 updateCounter();
 
@@ -25,6 +27,15 @@ next.addEventListener("click", function() {
   updateSlideshow();
 });
 
+slideshowImage.addEventListener("click", function() {
+  modal.style.display = "block";
+  modalImage.src = slideshowImage.src;
+});
+
+modal.addEventListener("click", function() {
+  modal.style.display = "none";
+});
+
 function updateSlideshow() {
   slideshowImage.src = images[index];
   updateCounter();
@@ -33,33 +44,3 @@ function updateSlideshow() {
 function updateCounter() {
   counter.innerText = (index + 1) + " / " + images.length;
 }
-// Get all the images in the slideshow
-images = document.querySelectorAll("#slideshow-container img");
-
-// Set the current index to 0
-let current = 0;
-
-// Function to show the next image in the slideshow
-function showNext() {
-  // Hide the current image
-  images[current].classList.remove("show");
-
-  // Move to the next image
-  current = (current + 1) % images.length;
-
-  // Show the next image
-  images[current].classList.add("show");
-
-  // Update the counter
-  updateCounter();
-}
-
-// Function to update the counter
-function updateCounter() {
-  const counter = document.querySelector("#counter");
-  counter.innerText = `${current + 1} / ${images.length}`;
-}
-
-// Set an interval to show the next image every 3 seconds
-setInterval(showNext, 3000);
-

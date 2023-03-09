@@ -1,14 +1,4 @@
 "use strict";
-/*    JavaScript 7th Edition
-      Chapter 5
-      Chapter Case
-
-      Application to generate a slide show
-      Author: 
-      Date:   
-
-      Filename: js05.js
-*/
 
 window.addEventListener("load", createLightbox);
 
@@ -92,7 +82,7 @@ function createLightbox() {
     currentImg > 1 ? currentImg-- : (currentImg = imgCount);
     lbCounter.textContent = currentImg + " / " + imgCount;
   }
-
+  // CREATE OVERLAY FUNCTION
   function createOverlay() {
    let overlay = document.createElement("div");
    overlay.id = "lbOverlay";
@@ -102,7 +92,7 @@ function createLightbox() {
    overlay.appendChild(figureBox);
  
    // Add the image to the figure box
-   let overlayImage = this.cloneNode(true);
+   let overlayImage = this.cloneNode("true");
    figureBox.appendChild(overlayImage);
  
    // Add the caption to the figure box
@@ -110,25 +100,19 @@ function createLightbox() {
    overlayCaption.textContent = this.alt;
    figureBox.appendChild(overlayCaption);
  
-   // Add the favorites button and remove button to the figure box
-   let favoritesBtn = document.createElement("div");
-   favoritesBtn.classList.add("favorite-btn");
-   favoritesBtn.textContent = "Add to Favorites";
-   figureBox.appendChild(favoritesBtn);
- 
-   let removeBtn = document.createElement("div");
-   removeBtn.classList.add("remove-btn");
-   removeBtn.textContent = "Remove";
-   figureBox.appendChild(removeBtn);
- 
-   favoritesBtn.addEventListener("click", addToFavorites);
-   removeBtn.addEventListener("click", removeFromFavorites);
+   // Add the favorite button to the figure box
+   let favoriteButton = document.createElement("a");
+   favoriteButton.href = "#";
+   favoriteButton.innerHTML = "Add to Favorites";
+   favoriteButton.id = "lbOverlayFavorite";
+   favoriteButton.addEventListener("click", addToFavorites);
+   figureBox.appendChild(favoriteButton);
  
    // Add a close button to the overlay
    let closeBox = document.createElement("div");
    closeBox.id = "lbOverlayClose";
    closeBox.innerHTML = "&times;";
-   closeBox.onclick = function () {
+   closeBox.onclick = function() {
      document.body.removeChild(overlay);
    };
    overlay.appendChild(closeBox);
@@ -137,52 +121,70 @@ function createLightbox() {
  }
  
 
-  let selectedImages = [];
-
-  //ADD TO FAVORITES FUNCTION ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  function addToFavorites() {
-   let favoritesContainer = document.getElementById("favorites-container");
-   
-   // Add images from the imgFiles array to the container
-   if (selectedImages.length >= 5) {
-     alert("You can only add up to 5 images to favorites.");
-     return;
-   }
- 
-   // check if the image is already in the favorites
-   if (selectedImages.includes(this)) {
-     return;
-   }
- 
-   let image = document.createElement("img");
-   image.src = imgFiles[selectedImages];
-   image.alt = this.alt;
- 
-   let container = document.createElement("div");
-   container.classList.add("image-container");
- 
-   container.appendChild(image);
- 
-   let addToFavoritesBtn = document.createElement("button");
-   addToFavoritesBtn.textContent = "Add to Favorites";
-   addToFavoritesBtn.addEventListener("click", addToFavorites);
-   container.appendChild(addToFavoritesBtn);
- 
-   let removeBtn = document.createElement("button");
-   removeBtn.textContent = "Remove";
-   removeBtn.addEventListener("click", removeFromFavorites);
-   container.appendChild(removeBtn);
- 
-   selectedImages.push(filename);
-   favoritesContainer.appendChild(container);
- } 
- 
-
-  //REMOVE FROM FAVORITES FUNCTION
-  function removeFromFavorites() {
-    let image = this.parentNode;
-    let index = selectedImages.indexOf(image);
-    selectedImages.splice(index, 1);
-    image.parentNode.removeChild(image);
-  }
 }
+function addToFavorites(event) {
+   event.preventDefault();
+   
+   // Get the clicked image and its source URL
+   let clickedImage = event.target.parentNode.querySelector("img");
+   let imageSrc = clickedImage.src;
+   
+   // Check if the image is already in favorites
+   let favoriteImages = document.querySelectorAll("#lbFavoritesContainer img");
+   let isAlreadyFavorite = Array.from(favoriteImages).some(img => img.src === imageSrc);
+   
+   if (!isAlreadyFavorite) {
+     // Create a new favorite image element
+     let favoriteImage = document.createElement("img");
+     favoriteImage.src = imageSrc;
+     
+     // Add the favorite image to the favorites container
+     let favoritesContainer = document.querySelector("#lbFavoritesContainer");
+     if (favoritesContainer.children.length < 5) {
+       favoritesContainer.appendChild(favoriteImage);
+     } else {
+       alert("You can only have up to 5 favorite images.");
+       alert("Remove 1 favorite image to make room for another");
+     }
+   } else {
+     // Remove the image from favorites
+     let matchingImage = Array.from(favoriteImages).find(img => img.src === imageSrc);
+     matchingImage.parentNode.removeChild(matchingImage);
+   }
+   
+// Update the favorite button UI
+let favoriteButton = document.querySelector("#button3");
+if (!isAlreadyFavorite) {
+  favoriteButton.innerHTML = "Remove from Favorites";
+} else {
+  favoriteButton.innerHTML = "Add to Favorites";
+}
+
+// Remove any existing click event handler on the button
+favoriteButton.removeEventListener("click", addToFavorites);
+
+// Add a new click event handler that calls addToFavorites
+favoriteButton.addEventListener("click", addToFavorites.bind(null, event));
+
+ }
+ 
+ 
+ function removeFavorite(imageSrc) {
+   // Find the favorite image with the matching image source and remove it from the favorite container
+   let favoriteImages = document.querySelectorAll("#lbFavoritesContainer img");
+   for (let i = 0; i < favoriteImages.length; i++) {
+     if (favoriteImages[i].src === imageSrc) {
+       favoriteImages[i].remove();
+       break;
+     }
+   }
+ }
+ // Add a favorite container to the landing page
+let favoriteContainer = document.createElement("div");
+favoriteContainer.id = "lbFavoritesContainer";
+document.body.appendChild(favoriteContainer);
+
+// Give the favorite container a flex design
+favoriteContainer.style.display = "flex";
+favoriteContainer.style.flexWrap = "wrap";
+ 
