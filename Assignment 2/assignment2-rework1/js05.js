@@ -53,6 +53,7 @@ function createLightbox() {
       timeID = window.setInterval(showNext, 1500);
     }
   };
+  
 
   // Design the lightbox images container
   lightBox.appendChild(lbImages);
@@ -82,7 +83,7 @@ function createLightbox() {
     currentImg > 1 ? currentImg-- : (currentImg = imgCount);
     lbCounter.textContent = currentImg + " / " + imgCount;
   }
-  // CREATE OVERLAY FUNCTION
+  // -------------------  OVERLAY FUNCTION ---------------------
   function createOverlay() {
    let overlay = document.createElement("div");
    overlay.id = "lbOverlay";
@@ -120,8 +121,6 @@ function createLightbox() {
  
    document.body.appendChild(overlay);
  }
- 
-
 }
 function addToFavorites(event) {
    event.preventDefault();
@@ -172,13 +171,13 @@ function addToFavorites(event) {
        break;
      }
    }
+   
  }
  // Add a favorite container to the landing page
 let favoriteContainer = document.createElement("div");
 favoriteContainer.id = "lbFavoritesContainer";
 document.body.appendChild(favoriteContainer);
 
-// Give the favorite container a flex design
-favoriteContainer.style.display = "flex";
-favoriteContainer.style.flexWrap = "wrap";
+
+
  

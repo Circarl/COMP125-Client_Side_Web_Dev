@@ -151,10 +151,12 @@ div#lbOverlay {
    height: 100%;                           /* Full height */
    top: 0;
    left: 0;
-   background-color: rgba(104,49,0,0.85);  /* Semitransparent brown background */
+   /* background-color: rgba(104,49,0,0.85);  Semitransparent brown background */
    display: flex;
    justify-content: center;
    align-items: center;
+   background: url(https://images.pexels.com/photos/1248466/pexels-photo-1248466.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1) no-repeat center center fixed;
+   background-size: cover;
 }
 
 /* Styles for the figure box within the overlay */
@@ -205,26 +207,26 @@ div#lbOverlay div#lbOverlayClose:hover {
    position: relative;
    display: inline-block;
  }
- 
+  /* ADD TO FAVORITE BUTTON DESIGN */
  #lbOverlayFavorite {
    position: relative;
-   top: 45px;
+   top: 35px;
    right: 10px;
    padding: 8px 8px;
    font-size: 14px;
    cursor: pointer;
-   color: white;
+   color: rgb(235, 86, 86);
    left: 10px;
    display: inline-flex;
    align-items: center;
    border-radius: 7px;
-   background-color: #008CBA;
+   background-color: white;
    text-decoration: none;
  } 
  #lbOverlayImageContainer {
    position: hidden;
  }
- 
+
  #lbOverlayFavorite a {
    color: white;
    text-decoration: none;
@@ -232,22 +234,24 @@ div#lbOverlay div#lbOverlayClose:hover {
  }
  
  #lbFavoritesContainer {
+max-width: fit-content;
+   padding-top: 10px;
    border: solid 1px blue;
    display: flex;
    flex-wrap: wrap;
    margin-top: 0px;
-   align-content: space-between;
-    justify-content: space-around;
+   overflow-x: auto;
  }
  
  #lbFavoritesContainer img {
    flex: 1;
-   max-height: 100px;
+   max-height: 300px;
    margin-right: 10px;
    margin-bottom: 10px;
    object-fit: contain;
    align-content: space-between;
     justify-content: space-around;
+    overflow-x: auto;
  }
  footer {
    padding-top: 30px;

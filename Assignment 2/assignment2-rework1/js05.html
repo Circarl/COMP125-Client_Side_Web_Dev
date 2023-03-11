@@ -6,7 +6,7 @@
       Chapter 5
       Chapter Case
 
-      Author: 
+      Author: Carl Kevin Gasal
       Date:   
 
       Filename: js05.html
@@ -18,12 +18,22 @@
    <link rel="stylesheet" href="lightbox.css" />
    <script src="lightbox_data.js" defer></script>
    <script src="js05.js" defer></script>
+   <style>      body {
+      background: url(https://images.pexels.com/photos/3942924/pexels-photo-3942924.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1) no-repeat center center fixed;
+      background-size: cover;
+    }</style>
 </head>
 
 <body>
    <article>
       <hr>
       <h1>Interactive Slideshow</h1>  
+      <p>Add to Favorites:</p>
+      <ul>
+         <li>Click the Interactive Image to open the modal Image</li>
+         <li>In the top-left side of the image, click the white 'Add to Favorite' button</li>
+         <li>To remove Image from the Favorites Container, re-select the image or click 'Remove Favorite' button</li>
+      </ul>
       <div id="lightbox"></div>
    </article>
    <div id="lbFavoritesContainer"></div>
