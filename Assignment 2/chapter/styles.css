@@ -46,8 +46,6 @@ body {
    background: white;
    margin: 0 auto;
    font-family: Arial, Helvetica, sans-serif; 
-   background: url(https://images.pexels.com/photos/3942924/pexels-photo-3942924.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1) no-repeat center center fixed;
-   background-size: cover;
 }
 
 ol, ul {
