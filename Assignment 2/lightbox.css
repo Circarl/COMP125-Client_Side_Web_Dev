@@ -77,7 +77,7 @@ div#lightbox div#lbCounter {
    width: 70px;
    height: 26px;
    line-height: 20px;
-   fonts-size: 20px;
+   font-size: 20px;
    background-color: rgba(0,0,0,0.5);
    border-radius: 4px;
    text-align: center;
@@ -151,10 +151,12 @@ div#lbOverlay {
    height: 100%;                           /* Full height */
    top: 0;
    left: 0;
-   background-color: rgba(104,49,0,0.85);  /* Semitransparent brown background */
+   /* background-color: rgba(104,49,0,0.85);  Semitransparent brown background */
    display: flex;
    justify-content: center;
    align-items: center;
+   background: url(https://images.pexels.com/photos/3942924/pexels-photo-3942924.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1) no-repeat center center fixed;
+   background-size: cover;
 }
 
 /* Styles for the figure box within the overlay */
@@ -201,9 +203,67 @@ div#lbOverlay div#lbOverlayClose:hover {
    color: #F7F1A9;
    text-shadow: 3px 3px 0px black;
 }
+.lbOverlayImageContainer {
+   position: relative;
+   display: inline-block;
+ }
+  /* ADD TO FAVORITE BUTTON DESIGN */
+ #lbOverlayFavorite {
+   position: relative;
+   top: 35px;
+   right: 10px;
+   padding: 8px 8px;
+   font-size: 14px;
+   cursor: pointer;
+   color: rgb(235, 86, 86);
+   left: 10px;
+   display: inline-flex;
+   align-items: center;
+   border-radius: 7px;
+   background-color: white;
+   text-decoration: none;
+ } 
+ #lbOverlayImageContainer {
+   position: hidden;
+ }
 
+ #lbOverlayFavorite a {
+   color: white;
+   text-decoration: none;
+   font-size: 20px;
+ }
+ 
+ #lbFavoritesContainer {
+   max-width: fit-content;
+   padding-top: 10px;
+   display: flex;
+   flex-wrap: wrap;
+   margin-top: 0px;
+   overflow-x: auto;
+ }
+ 
+ #lbFavoritesContainer img {
+   flex: 1;
+   max-height: 300px;
+   margin-right: 10px;
+   margin-bottom: 10px;
+   object-fit: contain;
+   align-content: space-between;
+    justify-content: space-around;
+    overflow-x: auto;
+ }
+ footer {
+   padding-top: 30px;
+   font-size: medium;
+   text-align: center;
+   color: black;
+   margin: 10px;
+}
+ 
+ 
 /* Keyframe animation for the opening of the modal window figure and caption */
 @keyframes zoom {
   from {transform:scale(0)}
   to {transform:scale(1)}
 }
+
