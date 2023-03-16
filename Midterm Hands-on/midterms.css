@@ -35,18 +35,38 @@ h1{
   .invalid-input {
     background-color: pink;
   }
+
+  /* Designing the Container: Controlling the both forms */
+
   .container{
-    width: 100%;
+    display: flex;
+    width: 75%;
     border: solid 1px blue;
-    margin: 10px;
-    padding: 15px;  }
-  #form1{
-    display: inline-block;
-    width: 45%;
-    border: solid 1px red;
+    margin: auto;
+    padding: 15px;  
+    justify-content: center;
+    vertical-align: middle  ;
   }
-  #form2{
-    display: inline-block;
-    width: 45%;
-    border: solid 1px green;
+
+  /* Designing the forms and its inputs*/
+
+  .address{
+    flex: 50%;
+    padding: 10px;
+    padding-left: 8%;
+    height: auto;
+    border: solid 1px red;
+    float: left;
+    width: 50%;
+  }
+  .container:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  input[type="text"] {
+    width: 75%;
+    padding: 12px 20px;
+    margin: 4px 0;
+    box-sizing: border-box;
   }
