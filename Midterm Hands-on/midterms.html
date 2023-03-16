@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="midterms.css">
+    <script src="midterms.js"></script>
+    <title>Midterm Hands-on Project</title>
+</head>
+<body>
+    <div class="container">
+        <div class="address" id="form1">
+            <h2>Billing Address</h2>
+            <label for="billing-name">Name:</label>
+            <input type="text" id="billing-name" name="billing-name">
+            <label for="billing-address">Address:</label>
+            <input type="text" id="billing-address" name="billing-address">
+            <label for="billing-city">City:</label>
+            <input type="text" id="billing-city" name="billing-city">
+            <label for="billing-state">State:</label>
+            <input type="text" id="billing-state" name="billing-state">
+            <label for="billing-zip">Zip Code:</label>
+            <input type="text" id="billing-zip" name="billing-zip">
+        </div>
+
+        <div class="address" id="form2">
+            <h2>Delivery Address</h2>
+            <input type="checkbox" id="same-as-billing" name="same-as-billing" onclick="copyBillingAddress()">
+            <label for="same-as-billing">Same as billing address</label>
+            <label for="delivery-name">Name:</label>
+            <input type="text" id="delivery-name" name="delivery-name">
+            <label for="delivery-address">Address:</label>
+            <input type="text" id="delivery-address" name="delivery-address">
+            <label for="delivery-city">City:</label>
+            <input type="text" id="delivery-city" name="delivery-city">
+            <label for="delivery-state">State:</label>
+            <input type="text" id="delivery-state" name="delivery-state">
+            <label for="delivery-zip">Zip Code:</label>
+            <input type="text" id="delivery-zip" name="delivery-zip">
+        </div>
+    </div>    
+</body>
+</html>

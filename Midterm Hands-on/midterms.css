@@ -1,0 +1,52 @@
+/* Author: Carl Kevin Gasal 
+   Date: 03-15-2023
+
+/* CSS styles for the address form */
+h1{
+    text-align: center;
+  }
+  form {
+    display: block;
+    flex-wrap: wrap;
+    border: #c1c1c1 solid;
+    
+    
+  }
+  
+  .address {
+    width: 45%;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    margin-bottom: 10px;
+    
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  button[type="submit"] {
+    margin-top: 20px;
+  }
+  
+  .invalid-input {
+    background-color: pink;
+  }
+  .container{
+    width: 100%;
+    border: solid 1px blue;
+    margin: 10px;
+    padding: 15px;  }
+  #form1{
+    display: inline-block;
+    width: 45%;
+    border: solid 1px red;
+  }
+  #form2{
+    display: inline-block;
+    width: 45%;
+    border: solid 1px green;
+  }
