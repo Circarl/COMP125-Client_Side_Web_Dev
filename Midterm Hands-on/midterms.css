@@ -9,8 +9,6 @@ h1{
     display: block;
     flex-wrap: wrap;
     border: #c1c1c1 solid;
-    
-    
   }
   
   .address {
@@ -24,7 +22,7 @@ h1{
   }
   
   label {
-    display: block;
+    display: inline-block;
     margin-bottom: 5px;
   }
   
@@ -33,7 +31,7 @@ h1{
   }
   
   .invalid-input {
-    background-color: pink;
+    background-color: rgb(243, 94, 118);
   }
 
   /* Designing the Container: Controlling the both forms */
@@ -53,11 +51,14 @@ h1{
   .address{
     flex: 50%;
     padding: 10px;
-    padding-left: 8%;
+    padding-left: 45px;
     height: auto;
     border: solid 1px red;
     float: left;
     width: 50%;
+    width: 250px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
   }
   .container:after {
     content: "";
@@ -66,7 +67,7 @@ h1{
   }
   input[type="text"] {
     width: 75%;
-    padding: 12px 20px;
+    padding: 7px 35px;
     margin: 4px 0;
     box-sizing: border-box;
   }

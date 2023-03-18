@@ -11,7 +11,7 @@ function copyBillingAddress() {
     var billingState = document.getElementById("billing-state").value;
     var billingZip = document.getElementById("billing-zip").value;
   
-    if (document.getElementById("same-as-billing").checked) {
+    if (document.getElementById("form-duplicate").checked) {
       document.getElementById("delivery-name").value = billingName;
       document.getElementById("delivery-address").value = billingAddress;
       document.getElementById("delivery-city").value = billingCity;
@@ -27,7 +27,7 @@ function copyBillingAddress() {
     var deliveryState = document.getElementById("delivery-state").value;
     var deliveryZip = document.getElementById("delivery-zip").value;
   
-    if (document.getElementById("same-as-billing").checked) {
+    if (document.getElementById("form-duplicate").checked) {
       return true; // no need to validate if same as billing address
     }
   

@@ -23,6 +23,13 @@
                   <td><input type="text" id="billing-Lname" name="billing-Lname"></td>
                 </tr>
                 <tr>
+                  <td><label for="billing-gender">Gender:</label></td>
+                  <td><select name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select> </td>
+                </tr>
+                <tr>
                   <td><label for="billing-address">Street Address:</label></td>
                   <td><input type="text" id="billing-address" name="billing-address"></td>
                 </tr>
@@ -35,50 +42,65 @@
                   <td><input type="text" id="billing-state" name="billing-state"></td>
                 </tr>
                 <tr>
-                  <td><label for="billing-zip">Zip Code:</label></td>
+                  <td><label for="billing-zip">Zip:</label></td>
                   <td><input type="text" id="billing-zip" name="billing-zip"></td>
                 </tr>
                 <tr>
                   <td><label for="billing-phone">Phone:</label></td>
                   <td><input type="text" id="billing-phone" name="billing-phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required></td>        
                 </tr>
+                <tr>
+                  <td><label for="billing-year">Year:</label></td>
+                  <td><input type="number" id="billing-year" name="billing-year" min="1980" max="2025" required></td>     
+                </tr> 
             </table>
         </div>
 
         <div class="address" id="form2">
             <h2>Delivery Address</h2>
-            <input type="checkbox" id="same-as-billing" name="same-as-billing" onclick="copyBillingAddress()">
-            <label for="same-as-billing">Same as billing address</label>
+            <input type="checkbox" id="form-duplicate" name="form-duplicate" onclick="copyBillingAddress()">
+            <label for="form-duplicate">Same as billing address</label><br><br>
             <table>
-                <tr>
-                  <td><label for="billing-Fname">First Name:</label></td>
-                  <td><input type="text" id="billing-Fname" name="billing-Fname"></td>
-                </tr>
-                <tr>
-                  <td><label for="billing-Lname">Last Name:</label></td>
-                  <td><input type="text" id="billing-Lname" name="billing-Lname"></td>
-                </tr>
-                <tr>
-                  <td><label for="billing-address">Street Address:</label></td>
-                  <td><input type="text" id="billing-address" name="billing-address"></td>
-                </tr>
-                <tr>
-                  <td><label for="billing-city">City:</label></td>
-                  <td><input type="text" id="billing-city" name="billing-city"></td>
-                </tr>
-                <tr>
-                  <td><label for="billing-state">State:</label></td>
-                  <td><input type="text" id="billing-state" name="billing-state"></td>
-                </tr>
-                <tr>
-                  <td><label for="billing-zip">Zip Code:</label></td>
-                  <td><input type="text" id="billing-zip" name="billing-zip"></td>
-                </tr>
-                <tr>
-                  <td><label for="billing-phone">Phone:</label></td>
-                  <td><input type="text" id="billing-phone" name="billing-phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required></td>        
-                </tr>
-            </table>
+              <tr>
+                <td><label for="billing-Fname">First Name:</label></td>
+                <td><input type="text" id="billing-Fname" name="billing-Fname"></td>
+              </tr>
+              <tr>
+                <td><label for="billing-Lname">Last Name:</label></td>
+                <td><input type="text" id="billing-Lname" name="billing-Lname"></td>
+              </tr>
+              <tr>
+                <td><label for="billing-gender">Gender:</label></td>
+                <td><select name="gender">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select> </td>
+              </tr>
+              <tr>
+                <td><label for="billing-address">Street Address:</label></td>
+                <td><input type="text" id="billing-address" name="billing-address"></td>
+              </tr>
+              <tr>
+                <td><label for="billing-city">City:</label></td>
+                <td><input type="text" id="billing-city" name="billing-city"></td>
+              </tr>
+              <tr>
+                <td><label for="billing-state">State:</label></td>
+                <td><input type="text" id="billing-state" name="billing-state"></td>
+              </tr>
+              <tr>
+                <td><label for="billing-zip">Zip:</label></td>
+                <td><input type="text" id="billing-zip" name="billing-zip"></td>
+              </tr>
+              <tr>
+                <td><label for="billing-phone">Phone:</label></td>
+                <td><input type="text" id="billing-phone" name="billing-phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required></td>        
+              </tr>
+              <tr>
+                <td><label for="billing-year">Year:</label></td>
+                <td><input type="number" id="billing-year" name="billing-year" min="1980" max="2025" required></td>     
+              </tr> 
+          </table>
         </div>
     </div>    
 </body>
