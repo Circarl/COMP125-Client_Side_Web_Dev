@@ -271,7 +271,17 @@ body {
   border: 1px solid #cddbef;
   border-radius: 2px;
 }
-
+/* selection input customize */
+#billing-gender, select{
+    color: #9899a0;
+    font: inherit;
+    padding: 9px 0;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ccc;
+}
+    /*
+end of selection input   */
 .form [type='submit'] {
 	opacity: 0;
 	display: block;

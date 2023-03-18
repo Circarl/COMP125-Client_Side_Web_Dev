@@ -4,6 +4,14 @@
 
 
 // Function to copy billing address to delivery address
+let switchers = [...document.querySelectorAll('.switcher')]
+
+switchers.forEach(item => {
+	item.addEventListener('click', function() {
+		switchers.forEach(item => item.parentElement.classList.remove('is-active'))
+		this.parentElement.classList.add('is-active')
+	})
+})
 function copyBillingAddress() {
     var billingFName = document.getElementById("billing-Fname").value;
     var billingLName = document.getElementById("billing-Lname").value;
@@ -23,25 +31,50 @@ function copyBillingAddress() {
   }
   // Function to validate the form
   function validateForm() {
-    var deliveryName = document.getElementById("delivery-name").value;
-    var deliveryAddress = document.getElementById("delivery-address").value;
-    var deliveryCity = document.getElementById("delivery-city").value;
-    var deliveryState = document.getElementById("delivery-state").value;
-    var deliveryZip = document.getElementById("delivery-zip").value;
-  
-    if (document.getElementById("form-duplicate").checked) {
-      return true; // no need to validate if same as billing address
+    let formFields = document.querySelectorAll('#address-form input, #address-form select');
+
+      // Loop through form fields and check their validity
+  let isValid = true;
+  formFields.forEach(field => {
+    if (!field.checkValidity()) {
+      field.reportValidity(); // show validation message if invalid
+      isValid = false;
     }
+  });
+
+  if (!isValid) {
+    return false; // prevent form submission if any fields are invalid
+  }
+
+  // Alert that submit button is clicked
+  alert('Submit button clicked!');
+
+  return true; // allow form submission if all fields are valid
+}
+    var deliveryFName = document.getElementById("delivery-Fname").value;
+    var deliveryLName = document.getElementById("delivery-Lname").value;
+    var deliveryAddress = document.getElementById("delivery-address").value;
+    var deliveryGender = document.getElementById("delivery-gender").value;
+    var deliveryPhone = document.getElementById("delivery-phone").value;
+    var deliveryYear = document.getElementById("delivery-year").value;
+  
+    
   
     var isValid = true;
     // Check if each delivery address input is not empty, add 'invalid-input' class if it is empty
 
-    if (deliveryName === "") {
-      document.getElementById("delivery-name").classList.add("invalid-input");
+    if (deliveryFName === "") {
+      document.getElementById("delivery-Fname").classList.add("Invalid-input");
       isValid = false;
     } else {
-      document.getElementById("delivery-name").classList.remove("invalid-input");
+      document.getElementById("delivery-Fname").classList.remove("Invalid-input");
     }
+    if (deliveryLName === "") {
+        document.getElementById("delivery-Lname").classList.add("Invalid-input");
+        isValid = false;
+      } else {
+        document.getElementById("delivery-Lname").classList.remove("Invalid-input");
+      }
   
     if (deliveryAddress === "") {
       document.getElementById("delivery-address").classList.add("invalid-input");
@@ -50,36 +83,38 @@ function copyBillingAddress() {
       document.getElementById("delivery-address").classList.remove("invalid-input");
     }
   
-    if (deliveryCity === "") {
-      document.getElementById("delivery-city").classList.add("invalid-input");
-      isValid = false;
-    } else {
-      document.getElementById("delivery-city").classList.remove("invalid-input");
-    }
+    if (deliveryGender === "-- Select gender --") {
+        deliveryGender.setCustomValidity("Please select a gender.");
+        deliveryGender.classList.add("invalid-input");
+        deliveryGender.focus();
+        isValid = false;
+      } else {
+        document.getElementById("delivery-gender").classList.remove("invalid-input");
+      }
+    //PHONE VALIDITY INPUT
+    if (deliveryPhone.value === "") {
+        deliveryPhone.setCustomValidity("Please enter a valid phone number.");
+        deliveryPhone.focus();
+        deliveryPhone.style.border = "2px solid red";
+        isValid = false;
+      } else if (!/^\d{10}$/.test(deliveryPhone.value)) {
+        isValid = false;
+      } else {
+        deliveryPhone.setCustomValidity("");
+        deliveryPhone.style.border = "";
+      }
+    //YEAR VALIDITY
+      if (deliveryYear.value === "") {
+        deliveryYear.setCustomValidity("Please enter a year.");
+        deliveryYear.focus();
+        deliveryYear.style.border = "2px solid red";
+        isValid = false;
+      } else if (!/^\d{4}$/.test(deliveryYear.value)) {
+        isValid = false;
+      } else {
+        deliveryYear.setCustomValidity("");
+        deliveryYear.style.border = "";
+      }
   
-    if (deliveryState === "") {
-      document.getElementById("delivery-state").classList.add("invalid-input");
-      isValid = false;
-    } else {
-      document.getElementById("delivery-state").classList.remove("invalid-input");
-    }
-  
-    if (deliveryZip === "") {
-      document.getElementById("delivery-zip").classList.add("invalid-input");
-      isValid = false;
-    } else {
-      document.getElementById("delivery-zip").classList.remove("invalid-input");
-    }
-  
-    return isValid;
-  }
 
-
-const switchers = [...document.querySelectorAll('.switcher')]
-
-switchers.forEach(item => {
-	item.addEventListener('click', function() {
-		switchers.forEach(item => item.parentElement.classList.remove('is-active'))
-		this.parentElement.classList.add('is-active')
-	})
-})
+//Switching tabs from 
