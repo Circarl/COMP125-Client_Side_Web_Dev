@@ -1,120 +1,176 @@
 // Author: Carl Kevin Gasal
 // Date: 03-15-2023
 
-// Function to copy billing address to delivery address
-let switchers = [...document.querySelectorAll('.switcher')];
+
+
+//Switching tabs
+let switchers = [...document.querySelectorAll('.switcher')]
+let previousState = null
 
 switchers.forEach(item => {
-item.addEventListener('click', function() {
-switchers.forEach(item => item.parentElement.classList.remove('is-active'));
-this.parentElement.classList.add('is-active');
-});
-});
+    item.addEventListener('click', function() {
+        try {
+            // Save the previous state
+            previousState = document.querySelector('.is-active')
+            
+            // Change the state
+            switchers.forEach(item => item.parentElement.classList.remove('is-active'))
+            this.parentElement.classList.add('is-active')
+        } catch (error) {
+            // Restore the previous state if an error occurs
+            if (previousState) {
+                previousState.classList.add('is-active')
+            }
+            console.error(error)
+        }
+    })
+})
 
+//copy billing to delivery form function
 function copyBillingAddress() {
-let billingFName = document.getElementById("billing-Fname").value;
-let billingLName = document.getElementById("billing-Lname").value;
-let billingAddress = document.getElementById("billing-address").value;
-let billingGender = document.getElementById("billing-gender").value;
-let billingPhone = document.getElementById("billing-phone").value;
-let billingYear = document.getElementById("billing-year").value;
 
-if (document.getElementById("form-duplicate").checked) {
-document.getElementById("delivery-Fname").value = billingFName;
-document.getElementById("delivery-Lname").value = billingLName;
-document.getElementById("delivery-address").value = billingAddress;
-document.getElementById("delivery-gender").value = billingGender;
-document.getElementById("delivery-phone").value = billingPhone;
-document.getElementById("delivery-year").value = billingYear;
-}
-}
-
-// Function to validate the form
-function validateForm() {
-let formFields = document.querySelectorAll('#address-form input, #address-form select');
-
-// Loop through form fields and check their validity
-let isValid = true;
-formFields.forEach(field => {
-if (!field.checkValidity()) {
-field.reportValidity(); // show validation message if invalid
-isValid = false;
-}
-});
-
-if (!isValid) {
-return false; // prevent form submission if any fields are invalid
-}
-
-// Alert that submit button is clicked
-alert('Submit button clicked!');
-
-return true; // allow form submission if all fields are valid
-}
-
-let deliveryFName = document.getElementById("delivery-Fname").value;
-let deliveryLName = document.getElementById("delivery-Lname").value;
-let deliveryAddress = document.getElementById("delivery-address").value;
-let deliveryGender = document.getElementById("delivery-gender").value;
-let deliveryPhone = document.getElementById("delivery-phone").value;
-let deliveryYear = document.getElementById("delivery-year").value;
-
-let isDeliveryFormValid = true;
-// Check if each delivery address input is not empty, add 'invalid-input' class if it is empty
-if (deliveryFName.trim() === "") {
-document.getElementById("delivery-Fname").classList.add("invalid-input");
-isDeliveryFormValid = false;
-} else {
-document.getElementById("delivery-Fname").classList.remove("invalid-input");
-}
-
-if (deliveryLName.trim() === "") {
-document.getElementById("delivery-Lname").classList.add("invalid-input");
-isDeliveryFormValid = false;
-} else {
-document.getElementById("delivery-Lname").classList.remove("invalid-input");
-}
-
-if (deliveryAddress.trim() === "") {
-document.getElementById("delivery-address").classList.add("invalid-input");
-isDeliveryFormValid = false;
-} else {
-document.getElementById("delivery-address").classList.remove("invalid-input");
-}
-// Validate gender
-if (deliveryGender === "-- Select gender --") {
-    document.getElementById("delivery-gender").setCustomValidity("Please select a gender.");
-    document.getElementById("delivery-gender").classList.add("invalid-input");
-    isValid = false;
-    } else {
-    document.getElementById("delivery-gender").setCustomValidity("");
-    document.getElementById("delivery-gender").classList.remove("invalid-input");
+    var billingFname = document.getElementById("billing-Fname").value;
+    var billingLname = document.getElementById("billing-Lname").value;
+    var billingAddress = document.getElementById("billing-address").value;
+    var billingGender = document.getElementById("billing-gender").value;
+    var billingPhone = document.getElementById("billing-phone").value;
+    var billingYear = document.getElementById("billing-year").value;
+  
+    if (document.getElementById("form-duplicate").checked) {
+      document.getElementById("delivery-Fname").value = billingFname;
+      document.getElementById("delivery-Lname").value = billingLname;
+      document.getElementById("delivery-address").value = billingAddress;
+      document.getElementById("delivery-gender").value = billingGender;
+      document.getElementById("delivery-phone").value = billingPhone;
+      document.getElementById("delivery-year").value = billingYear;
     }
-    
-    // Validate phone number
-    if (deliveryPhone.trim() === "") {
-    document.getElementById("delivery-phone").setCustomValidity("Please enter a valid phone number.");
-    document.getElementById("delivery-phone").focus();
-    document.getElementById("delivery-phone").style.border = "2px solid red";
-    isValid = false;
-    } else if (!/^\d{10}$/.test(deliveryPhone.trim())) {
-    document.getElementById("delivery-phone").setCustomValidity("Please enter a 10-digit phone number.");
-    document.getElementById("delivery-phone").focus();
-    isValid = false;
-    } else {
-    document.getElementById("delivery-phone").setCustomValidity("");
+
+}
+// Function to copy billing address to delivery address
+function checkValidity() {
+    var deliveryFname = document.getElementById("delivery-Fname");
+    var deliveryLname = document.getElementById("delivery-Lname");
+    var deliveryAddress = document.getElementById("delivery-address");
+    var deliveryGender = document.getElementById("delivery-gender");
+    var deliveryPhone = document.getElementById("delivery-phone");
+    var deliveryYear = document.getElementById("delivery-year");
+  
+    if (document.getElementById("same-as-billing").checked) {
+      return true; // no need to validate if same as billing address
     }
-    
-    // Validate year
-    if (deliveryYear.trim() === "") {
-    document.getElementById("delivery-year").setCustomValidity("Please enter a year.");
-    document.getElementById("delivery-year").focus();
-    isValid = false;
-    } else if (!/^\d{4}$/.test(deliveryYear.trim())) {
-    document.getElementById("delivery-year").setCustomValidity("Please enter a valid year.");
-    document.getElementById("delivery-year").focus();
-    isValid = false;
+  
+    var isValid = true;
+  
+    // Check delivery first name
+    if (deliveryFname.value === "") {
+      deliveryFname.classList.add("invalid-input");
+      deliveryFname.setCustomValidity("Please enter your first name.");
+      isValid = false;
     } else {
-    document.getElementById("delivery-year").setCustomValidity("");
+      deliveryFname.classList.remove("invalid-input");
+      deliveryFname.setCustomValidity("");
     }
+  
+    // Check delivery last name
+    if (deliveryLname.value === "") {
+      deliveryLname.classList.add("invalid-input");
+      deliveryLname.setCustomValidity("Please enter your last name.");
+      isValid = false;
+    } else {
+      deliveryLname.classList.remove("invalid-input");
+      deliveryLname.setCustomValidity("");
+    }
+  
+    // Check delivery address
+    if (deliveryAddress.value === "") {
+      deliveryAddress.classList.add("invalid-input");
+      deliveryAddress.setCustomValidity("Please enter your address.");
+      isValid = false;
+    } else {
+      deliveryAddress.classList.remove("invalid-input");
+      deliveryAddress.setCustomValidity("");
+    }
+  
+    // Check delivery gender
+    if (deliveryGender.value === "") {
+      deliveryGender.classList.add("invalid-input");
+      deliveryGender.setCustomValidity("Please select your gender.");
+      isValid = false;
+    } else {
+      deliveryGender.classList.remove("invalid-input");
+      deliveryGender.setCustomValidity("");
+    }
+  
+    // Check delivery phone number
+    if (deliveryPhone.value === "") {
+      deliveryPhone.classList.add("invalid-input");
+      deliveryPhone.setCustomValidity("Please enter your phone number.");
+      isValid = false;
+    } else {
+      deliveryPhone.classList.remove("invalid-input");
+      deliveryPhone.setCustomValidity("");
+    }
+  
+    // Check delivery year
+    if (deliveryYear.value === "") {
+      deliveryYear.classList.add("invalid-input");
+      deliveryYear.setCustomValidity("Please enter your birth year.");
+      isValid = false;
+    } else {
+      deliveryYear.classList.remove("invalid-input");
+      deliveryYear.setCustomValidity("");
+    }
+  
+    // Add :valid and :invalid pseudo-classes to input fields
+    if (isValid) {
+      deliveryFname.classList.add("valid-input");
+      deliveryLname.classList.add("valid-input");
+      deliveryAddress.classList.add("valid-input");
+      deliveryGender.classList.add("valid-input");
+      deliveryPhone.classList.add("valid-input");
+      deliveryYear.classList.add("valid-input");
+    } else {
+      deliveryFname.classList.remove("valid-input");
+      deliveryLname.classList.remove("valid-input");
+      deliveryAddress.classList.remove("valid-input");
+      deliveryGender.classList.remove("valid-input");
+      deliveryPhone.classList.remove("valid-input");
+      deliveryYear.classList.remove("valid-input");
+    }
+  
+    return isValid;
+  }
+  
+//   var form = document.getElementById('address-form');
+// var phoneInput = document.getElementById('billing-phone');
+// //Event listener for a valid phone
+// form.addEventListener('submit', function(event) {
+//     var phonePattern = /^\d{10}$/;
+//     var phoneValue = phoneInput.value;
     
+//     if (!phoneValue.match(phonePattern)) {
+//         event.preventDefault();
+//         phoneInput.setCustomValidity('Please enter a valid phone number (e.g. 123-456-7890)');
+//     } else if (phoneValue.match(/\D/)) {
+//         event.preventDefault();
+//         phoneInput.setCustomValidity('Phone number can only contain numbers (e.g. 1234567890)');
+//     } else {
+//         phoneInput.setCustomValidity('');
+//     }
+
+//     if (!phoneInput.checkValidity()) {
+//         event.preventDefault();
+//         phoneInput.setCustomValidity('Please enter a valid phone number (e.g. 123-456-7890)');
+//         phoneInput.focus();
+//     } else if (phoneInput.value.length !== 10) {
+//         event.preventDefault();
+//         phoneInput.setCustomValidity('Phone number must be 10 digits');
+//         phoneInput.focus();
+//     } else {
+//         phoneInput.setCustomValidity('');
+//     }
+// });
+
+
+  
+  

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<link rel="stylesheet" href="draft1.css">
+<script src="" defer></script>
+<title>Midterm Hands-on</title>
+</head>
+<body>
+
+<h2>Responsive Checkout Form</h2>
+<p>Resize the browser window to see the effect. When the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other.</p>
+<div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form id="address-form" onsubmit="return validateForm()">
+      
+        <div class="row">
+          <div class="col-50 address">
+            <h3>Billing Address</h3>
+            <!-- first and last name row: BILLING -->
+            <div class="row">
+              <div class="col-50">
+                <label for="billing-fname">First Name</label>
+                <input type="text" id="billing-fname" name="billing-fname" placeholder="Firstname">
+              </div>
+              <div class="col-50">
+                <label for="billing-lname">Last Name:</label>
+                <input type="text" id="billing-lname" name="billing-lname" placeholder="Lastname">
+              </div>
+            </div>
+            <label for="billing-address">Street Address</label>
+            <input type="text" id="billing-address" name="billing-address" placeholder="123 E. 21st Street">
+            <label for="email">Email</label>
+            <input type="text" id="billing-email" name="billing-email" placeholder="john@example.com">
+
+            <div class="row">
+              <div class="col-50">
+                <label for="billing-city">City</label>
+                <input type="text" id="billing-city" name="billing-city" placeholder="Toronto">
+              </div>
+              <div class="col-50">
+                <label for="billing-state">State</label>
+                <input type="text" id="billing-state" name="billing-state" placeholder="ON">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-50">
+                <label for="billing-phone">Phone</label>
+                <input type="text" id="billing-phone" name="billing-phone" placeholder="647-000-0001">
+
+              </div>
+              <div class="col-50">
+                <label for="billing-zip">Zip</label>
+                <input type="text" id="billing-zip" name="billing-zip" placeholder="10001">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-50 address">
+            <h3>Delivery Address</h3>
+            <!-- first and last name row: DELIVERY -->
+            <div class="row">
+              <div class="col-50">
+                <label for="delivery-fname">First Name</label>
+                <input type="text" id="delivery-fname" name="delivery-fname" placeholder="Firstname">
+              </div>
+              <div class="col-50">
+                <label for="delivery-lname">Last Name:</label>
+                <input type="text" id="delivery-lname" name="delivery-lname" placeholder="Lastname">
+              </div>
+            </div>
+            <label for="delivery-address">Street Address</label>
+            <input type="text" id="delivery-address" name="delivery-address" placeholder="123 E. 21st Street">
+            <label for="email">Email</label>
+            <input type="text" id="delivery-email" name="delivery-email" placeholder="john@example.com">
+
+            <div class="row">
+              <div class="col-50">
+                <label for="delivery-city">City</label>
+                <input type="text" id="delivery-city" name="delivery-city" placeholder="Toronto">
+              </div>
+              <div class="col-50">
+                <label for="delivery-state">State</label>
+                <input type="text" id="delivery-state" name="delivery-state" placeholder="ON">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-50">
+                <label for="delivery-phone">Phone</label>
+                <input type="text" id="delivery-phone" name="delivery-phone" placeholder="647-000-0001">
+
+              </div>
+              <div class="col-50">
+                <label for="delivery-zip">Zip</label>
+                <input type="text" id="delivery-zip" name="delivery-zip" placeholder="10001">
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <label>
+          <input type="checkbox" name="sameadr"> Shipping address same as delivery
+        </label>
+        <input type="submit" value="Submit" class="btn">
+      </form>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -312,6 +312,3 @@ end of selection input   */
 	box-shadow: inset 0 0 0 2px #a7e245;
 	transform: translateX(30%);
 }
-.invalid-input {
-    background-color: rgb(243, 94, 118);
-  }
