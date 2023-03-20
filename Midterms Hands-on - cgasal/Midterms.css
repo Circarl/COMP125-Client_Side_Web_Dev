@@ -2,8 +2,17 @@ body {
     font-family: Arial;
     font-size: 17px;
     padding: 8px;
+    background: #3b4465 url(https://free4kwallpapers.com/uploads/wallpaper/wide-minimalistic-landscape-wallpaper-1440x900-wallpaper.jpg) no-repeat center center fixed;
+    background-size: cover;
+    backdrop-filter: blur(3px);
   }
-  
+  h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+  }
+  h3{
+    font-family: Tahoma;
+  }
   * {
     box-sizing: border-box;
   }
@@ -30,6 +39,12 @@ body {
     -ms-flex: 75%; /* IE10 */
     flex: 75%;
   }
+  div.col-50.address.billing{
+    background-color: lightblue;
+  }
+  div.col-50.address.delivery{
+    background-color: lightyellow;
+  }
   
   .col-25,
   .col-50,
@@ -38,9 +53,8 @@ body {
   }
   
   .container {
-    background-color: #f2f2f2;
+    background-color: lightcyan;
     padding: 5px 20px 15px 20px;
-    border: 1px solid lightgrey;
     border-radius: 3px;
   }
   
@@ -66,7 +80,12 @@ body {
     -moz-appearance: none;
     appearance: none;
   }
-  
+  select#billing-state.invalid-input{
+    background-color: pink;
+  }
+  select#delivery-state.invalid-input{
+    background-color: pink;
+  }
   select::-ms-expand {
     display: none;
   }
@@ -75,22 +94,6 @@ body {
   label {
     margin-bottom: 10px;
     display: block;
-  }
-  
-  .btn {
-    background-color: #04AA6D;
-    color: white;
-    padding: 12px;
-    margin: 10px 0;
-    border: none;
-    width: 100%;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 17px;
-  }
-  
-  .btn:hover {
-    background-color: #45a049;
   }
   
   a {
@@ -109,7 +112,7 @@ body {
   /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
   @media (max-width: 800px) {
     .row {
-      flex-direction: column-reverse;
+      flex-direction: column;
     }
     .col-25 {
       margin-bottom: 20px;
@@ -118,8 +121,11 @@ body {
   .invalid-input {
     background-color: pink;
   }
+  .valid-input {
+    background-color: rgb(184, 245, 184);
+    }
   button {
-    background-color: #04AA6D;
+    background-color: royalblue;
     color: white;
     padding: 12px;
     margin: 10px 0;
@@ -131,9 +137,16 @@ body {
   }
   
   button:hover {
-    background-color: #45a049;
+    background-color: cornflowerblue;
   }
   label#checkbox-row{
 
     text-align: center;
   }
+  footer {
+    padding-top: 30px;
+    font-size: medium;
+    text-align: center;
+    color: white;
+    margin: 10px;
+}

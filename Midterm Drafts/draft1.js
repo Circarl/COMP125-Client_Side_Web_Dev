@@ -46,6 +46,7 @@ function checkValidity() {
     function setCustomValidity(input, message) {
       input.setCustomValidity(message);
       if (message === "") {
+        input.classList.add("valid-input");
         input.classList.remove("invalid-input");
       } else {
         input.classList.add("invalid-input");
@@ -61,16 +62,35 @@ function checkValidity() {
         setCustomValidity(input, "");
       }
     });
-    
+
     //state validation
     var billingState = document.getElementById("billing-state");
       if (billingState.value === "") {
-        setCustomValidity(billingState, "Please select your province.");
+        setCustomValidity(billingState, "Please select your state.");
         isValid = false;
       } else {
         setCustomValidity(billingState, "");
       }  //state validation
 
+    //phone validation
+    var billingPhone = document.getElementById("billing-phone");
+    var phoneRegex = /^\d{10}$/; //matches 10-digit phone number
+    if (!phoneRegex.test(billingPhone.value)) {
+    setCustomValidity(billingPhone, "Please enter a valid 10-digit phone number.");
+    isValid = false;
+    } else {
+    setCustomValidity(billingPhone, "");
+    } //phone validation
+
+      //zip validation
+      var billingZip = document.getElementById("billing-zip");
+      var zipRegex = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
+      if (!zipRegex.test(billingZip.value)) {
+        setCustomValidity(billingZip, "Please enter a valid ZIP code in the format 'A1B2A3'.");
+        isValid = false;
+      } else {
+        setCustomValidity(billingZip, "");
+      } //zip validation
     if (!isValid) {
       var invalidInput = document.querySelector(".invalid-input");
       if (invalidInput) {
@@ -80,71 +100,3 @@ function checkValidity() {
   
     return isValid;
   }
-  
-  
-      
-    //   if (deliveryLname === "") {
-    //     setCustomValidity(document.getElementById("delivery-lname"), "Last name is required.");
-    //     errors.push("Last name is required.");
-    //     isValid = false;
-    //   } else {
-    //     setCustomValidity(document.getElementById("delivery-lname"), "");
-    //   }
-      
-    //   if (deliveryAddress === "") {
-    //     setCustomValidity(document.getElementById("delivery-address"), "Address is required.");
-    //     errors.push("Address is required.");
-    //     isValid = false;
-    //   } else {
-    //     setCustomValidity(document.getElementById("delivery-address"), "");
-    //   }
-      
-    //   if (deliveryEmail === "") {
-    //     setCustomValidity(document.getElementById("delivery-email"), "Email is required.");
-    //     errors.push("Email is required.");
-    //     isValid = false;
-    //   } else {
-    //     setCustomValidity(document.getElementById("delivery-email"), "");
-    //   }
-      
-    //   if (deliveryCity === "") {
-    //     setCustomValidity(document.getElementById("delivery-city"), "City is required.");
-    //     errors.push("City is required.");
-    //     isValid = false;
-    //   } else {
-    //     setCustomValidity(document.getElementById("delivery-city"), "");
-    //   }
-      
-    //   if (deliveryState === "") {
-    //     setCustomValidity(document.getElementById("delivery-state"), "State is required.");
-    //     errors.push("State is required.");
-    //     isValid = false;
-    //   } else {
-    //     setCustomValidity(document.getElementById("delivery-state"), "");
-    //   }
-      
-    //   if (deliveryZip === "") {
-    //     setCustomValidity(document.getElementById("delivery-zip"), "Zip code is required.");
-    //     errors.push("Zip code is required.");
-    //     isValid = false;
-    //   } else {
-    //     setCustomValidity(document.getElementById("delivery-zip"), "");
-    //   }
-      
-    //   if (deliveryPhone === "") {
-    //     setCustomValidity(document.getElementById("delivery-phone"), "Phone number is required.");
-    //     errors.push("Phone number is required.");
-    //     isValid = false;
-    //   } else {
-    //     setCustomValidity(document.getElementById("delivery-phone"), "");
-    //   }
-
-//       if (!isValid) {
-//         var invalidInput = document.querySelector(".invalid-input");
-//         if (invalidInput) {
-//           invalidInput.focus();
-//         }
-//       }
-
-//     return isValid;
-//   }
