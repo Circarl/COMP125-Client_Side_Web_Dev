@@ -4,8 +4,8 @@
       Project 07-04
 
       Project to create a customer queue
-      Author: 
-      Date:   
+      Author: Carl Kevin Gasal
+      Date:   03 - 26 - 2023
 
       Filename: project07-04.js
 */

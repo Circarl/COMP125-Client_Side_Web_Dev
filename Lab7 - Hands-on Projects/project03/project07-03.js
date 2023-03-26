@@ -4,8 +4,8 @@
       Project 07-03
 
       Project to create a New Year's Eve countdown clock
-      Author: 
-      Date:   
+      Author: Carl Kevin Gasal
+      Date:   03 - 23 - 2023
 
       Filename: project07-03.js
 */

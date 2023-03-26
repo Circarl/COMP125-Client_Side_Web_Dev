@@ -4,8 +4,8 @@
       Project 07-02
 
       Project to deal cards from a shuffled poker deck
-      Author: 
-      Date:   
+      Author: Carl Kevin Gasal
+      Date:   03 - 19 - 2023
 
       Filename: project07-02.js
 */

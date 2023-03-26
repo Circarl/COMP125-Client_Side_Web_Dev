@@ -5,7 +5,7 @@
 
       Project to validate a form used for setting up a new account
       Author: Carl Kevin Gasal
-      Date:   03 - 26 - 2023
+      Date:   03 - 19 - 2023
 
       Filename: project07-01.js
 */

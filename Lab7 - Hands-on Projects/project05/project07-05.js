@@ -4,8 +4,8 @@
       Project 07-05
 
       Project to compare the distribution of word lengths between two authors
-      Author: 
-      Date:   
+      Author: Carl Kevin Gasal
+      Date:   03 - 26 - 2023
 
       Filename: project07-05.js
 */
