@@ -5,7 +5,7 @@
 
       Project to create a timer object
       Author: Carl Kevin Gasal
-      Date:   03 - 30 - 2023
+      Date:   03 - 28 - 2023
 
       Filename: project08-01.js
 */

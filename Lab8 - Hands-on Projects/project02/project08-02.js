@@ -5,7 +5,7 @@
 
       Project to add balls bouncing within a container
       Author: Carl Kevin Gasal
-      Date:   03 - 30 - 2023
+      Date:   03 - 29 - 2023
 
       Filename: project08-02.js
 */
@@ -13,6 +13,7 @@
 const BALL_RADIUS = 60; // radius of the ball in pixels
 const BOX_HEIGHT = 400; // height of the container in pixels
 const BOX_WIDTH = 800;  // width of the container in pixels
+
 
 /*--------------- Object Code --------------------*/
 let box = {

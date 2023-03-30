@@ -4,46 +4,35 @@
       Project 08-03
 
       Project to build a pizza using object oriented programming
-      Author: 
-      Date:   
+      Author: Carl Kevin Gasal
+      Date:   03 - 30 - 2023
 
       Filename: project08-03.js
 */
 
 /*---------------- Object Code ----------------------*/
-
 let cart = {
    items : [],
    addItem : function(foodItem) {
       this.items.push(foodItem);
    }
 }
-
-
-/* Constructor function for the class of pizza objects */
 function Pizza() {
    this.size;
    this.crust;
    this.toppings = [];
 }
-
-/* Constructor function for the class of pizza toppings */
 function Topping() {
    this.name;
    this.side;
 }
-
-/* Method to add a topping to a pizza */
 Pizza.prototype.addTopping = function(topping) {
   this.toppings.push(topping);
 };
 
-/* Method to add pizza to shopping cart */
 Pizza.prototype.addToCart = function(cart) {
    cart.items.push(this);
 }
-
-/* Method to summarize the pizza options */
 Pizza.prototype.summarize = function() {
    let summary = "Pizza: ";
    summary += this.size + " ";
@@ -53,9 +42,6 @@ Pizza.prototype.summarize = function() {
    }
    return summary;
 }
-
-
-
 
 /*----------------------------- Interface Code -------------------------*/
 
@@ -108,9 +94,6 @@ function drawPizza() {
       }
    }      
 }
-
-
-
 // Function to build the pizza
 function buildPizza() {
    let checkedToppings = document.querySelectorAll("input.topping:checked"); 
@@ -130,7 +113,6 @@ function buildPizza() {
    
    return myPizza;
 }    
-
 // Function to add the built pizza to the shopping cart
 function updateCart() {
    let myPizza = buildPizza();

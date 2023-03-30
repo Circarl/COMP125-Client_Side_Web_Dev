@@ -4,8 +4,8 @@
       Project 08-05
 
       Chess Objects used for Chess Games
-      Author: 
-      Date:   
+      Author: Carl Kevin Gasal
+      Date:   03 - 30 - 2023
 
       Filename: project08-05.js
 */
@@ -35,6 +35,7 @@ function chessSet(game) {
                case "Q" : rank = "Queen"; break;
                case "K" : rank = "King"; break;
             }
+            // Define a new chess piece
             let chessPiece = new piece(color, rank);
             chessPiece.square = String.fromCharCode(j + 97) + (8 - i);
             let image = "";

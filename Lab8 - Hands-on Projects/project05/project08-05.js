@@ -4,8 +4,8 @@
       Project 08-05
 
       Interface to replay a chess game stored in a JSON file
-      Author: 
-      Date:   
+      Author: Carl Kevin Gasal
+      Date:   03 - 30 - 2023
 
       Filename: project08-05.js
 */
@@ -35,12 +35,14 @@ getLogButton.onchange = function() {
    // Once the file has finished loading, parse the JSON file
    // and store the contents in the game object literal
    fr.onload=function(){ 
+      // Load data from the JSON file into the game object
       let game = JSON.parse(fr.result);
       
       titleBox.textContent = game.title;
       descBox.textContent = game.description;
       
       writeMoveLog(game.moves);
+      // Create a new chess set object
       let mySet = new chessSet(game);
       
       setupBoard(mySet);
@@ -202,8 +204,6 @@ function showNextBoard(game) {
       moveCell(startCell, endCell)
    }
 }
-
-
 /* Function to update the board when the current move is undone */
 function showPrevBoard(game) {
    // Remove highlighting from the move
@@ -229,7 +229,6 @@ function showPrevBoard(game) {
    } else if (moveStr.includes("-")) {
       movePiece();
    }
-   
    // Reduce the move number by 1
    game.move--;
    
@@ -237,7 +236,6 @@ function showPrevBoard(game) {
    function moveCell(start, end) {    
       document.getElementById(end).appendChild(document.getElementById(start).firstElementChild);      
    }
-   
    // Move a captured piece from its box back to the board
    function addCell(cell) {
       // Moves a captured piece to the box
@@ -247,7 +245,6 @@ function showPrevBoard(game) {
          document.getElementById(cell).appendChild(whiteBox.lastElementChild);
       }
    }
-   
    // Perform a kingside caste in reverse
    function kingSideCastle() {
       if (game.move % 2 === 0) {  // white kingside castle
@@ -258,7 +255,6 @@ function showPrevBoard(game) {
          moveCell("f8", "h8");
       }
    }
-   
    // Perform a queenside castle in reverse
    function queenSideCastle() {
       if (game.move % 2 === 1) {  // white queenside castle
@@ -269,7 +265,6 @@ function showPrevBoard(game) {
          moveCell("d8", "a8");
       }
    }  
-   
    // Demote a pawn that had reached the end rank
    function pawnDemotion() {
       let mIndex = moveStr.indexOf("-");
@@ -286,9 +281,7 @@ function showPrevBoard(game) {
       
       // Change image to promoted piece
       document.getElementById(endCell).firstElementChild.innerHTML = "&#" + rankNum + ";";
-      
    }
-   
    // Find the addresses of the starting and ending cell during a capture
    function addPiece() {
       let tIndex = moveStr.indexOf("x");
@@ -297,7 +290,6 @@ function showPrevBoard(game) {
       moveCell(startCell, endCell);
       addCell(startCell);
    }   
-   
    // Find the addresses of the starting and ending cell during a move
    function movePiece() {
       let mIndex = moveStr.indexOf("-");

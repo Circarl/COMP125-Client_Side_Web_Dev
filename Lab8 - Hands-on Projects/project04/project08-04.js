@@ -4,13 +4,11 @@
       Project 08-04
 
       Retrieve Staff Data from a JSON File
-      Author: 
-      Date:   
+      Author: Carl Kevin Gasal
+      Date:   03 - 30 - 2023
 
       Filename: project08-04.js
 */
-
-/*---------------- Object Code ----------------------*/
 
 let getFileButton = document.getElementById("getFile");
 let containerBox = document.getElementById("container");
