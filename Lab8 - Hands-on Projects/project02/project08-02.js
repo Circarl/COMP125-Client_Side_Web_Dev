@@ -4,27 +4,24 @@
       Project 08-02
 
       Project to add balls bouncing within a container
-      Author: 
-      Date:   
+      Author: Carl Kevin Gasal
+      Date:   03 - 30 - 2023
 
       Filename: project08-02.js
 */
-
 /*---------------- CONSTANTS ---------------------*/
-const BALL_RADIUS = 60;
-const BOX_HEIGHT = 400;
-const BOX_WIDTH = 800;
+const BALL_RADIUS = 60; // radius of the ball in pixels
+const BOX_HEIGHT = 400; // height of the container in pixels
+const BOX_WIDTH = 800;  // width of the container in pixels
 
 /*--------------- Object Code --------------------*/
-
 let box = {
    width: BOX_WIDTH,
    height: BOX_HEIGHT,
    xPos: 0,
    yPos: 0
 }
-
-/* Constructor function for the ball object class */
+// Constructor
 function ball(size) {
    this.radius = size;
    this.xPos = null;
@@ -33,7 +30,7 @@ function ball(size) {
    this.yVelocity = null;
 }
 
-/* Move the ball, reversing direction when it hits a ball */
+//moving ball, reverse direction
 ball.prototype.moveWithin = function(container) {
       let ballTop = this.yPos;
       let ballLeft = this.xPos;   
@@ -53,10 +50,6 @@ ball.prototype.moveWithin = function(container) {
       this.xPos += this.xVelocity
 
 };
-
-
-
-
 
 /*---------------Interface Code -----------------*/
 
@@ -81,7 +74,6 @@ addBall.onclick = function() {
    // Append the ball image to the box
    boxImage.appendChild(ballImage);     
    
-   // Create a new ball
    let newBall = new ball(BALL_RADIUS);
    newBall.yPos = (BOX_HEIGHT - BALL_RADIUS)/2;   
    newBall.xPos = (BOX_WIDTH - BALL_RADIUS)/2;
