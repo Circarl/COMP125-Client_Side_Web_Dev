@@ -1,107 +1,103 @@
-// Client Side Web Development
-// COMP 125 - 001
-// 13521 Class 
-// Assignment #3
+// Client Side Web Development - Assignment #3
+// COMP 125 - Sec.009
 
-// Author: Voltaire A. Rono
-// Student #: 301276375
+// Author: Carl Kevin Gasal
+// Student #: 301242419
 
-// volt is short for Voltaire
+const Canvas = document.getElementById("gameCanvas");
+const ctx = Canvas.getContext("2d");
+const scoreDisplay = document.getElementById("score-display");
 
-const voltCanvas = document.getElementById("gameCanvas");
-const voltCtx = voltCanvas.getContext("2d");
-const voltScoreDisplay = document.getElementById("score-display");
+const moleGif = new Image();
+moleGif.src = "Mole.png";
 
-const voltStarGif = new Image();
-voltStarGif.src = "star.gif";
+const mole_hit_gif = new Image();
+mole_hit_gif.src = "Mole_Hit.png";
 
-const voltExplosionGif = new Image();
-voltExplosionGif.src = "explosion.gif";
+const BackgroundMusic = document.getElementById("backgroundMusic");
+BackgroundMusic.volume = 0.5;
+const hitSound = document.getElementById("mole_hit_sound");
 
-const voltBackgroundMusic = document.getElementById("backgroundMusic");
-voltBackgroundMusic.volume = 0.5;
-const voltTwinkleSound = document.getElementById("twinkleSound");
-
-let voltScore = 0;
-let voltInterval = 1000;
-let voltStar = {
-  x: Math.random() * (voltCanvas.width - 96),
-  y: Math.random() * (voltCanvas.height - 96),
+let Score_Hit = 0;
+let interval = 1000;
+let Mole = {
+  x: Math.random() * (Canvas.width - 96),
+  y: Math.random() * (Canvas.height - 96),
   width: 96,
   height: 96
 };
 
-const voltExplosion = {
+const moleHit = {
   active: false,
   x: 0,
   y: 0,
   timer: null,
 };
 
-function resetStar() {
-  voltStar.x = Math.random() * (voltCanvas.width - voltStar.width);
-  voltStar.y = Math.random() * (voltCanvas.height - voltStar.height);
+function resetGame() {
+  Mole.x = Math.random() * (Canvas.width - Mole.width);
+  Mole.y = Math.random() * (Canvas.height - Mole.height);
 }
 
 function resetSpeed() {
-  voltInterval = 1000;
+  interval = 1000;
 }
 
 function startBackgroundMusic() {
-  voltBackgroundMusic.play();
+  BackgroundMusic.play();
 }
 
 function stopBackgroundMusic() {
-  voltBackgroundMusic.pause();
+  BackgroundMusic.pause();
 }
 
 function resetScore() {
-  voltScore = 0;
-  voltScoreDisplay.textContent = "Score: " + voltScore;
+  Score_Hit = 0;
+  scoreDisplay.textContent = "Score: " + Score_Hit;
 }
 
-voltCanvas.addEventListener("click", (e) => {
-  const rect = voltCanvas.getBoundingClientRect();
+Canvas.addEventListener("click", (e) => {
+  const rect = Canvas.getBoundingClientRect();
   const x = e.clientX - rect.left;
   const y = e.clientY - rect.top;
 
   if (
-    x >= voltStar.x && x <= voltStar.x + voltStar.width &&
-    y >= voltStar.y && y <= voltStar.y + voltStar.height
+    x >= Mole.x && x <= Mole.x + Mole.width &&
+    y >= Mole.y && y <= Mole.y + Mole.height
   ) {
-    voltTwinkleSound.currentTime = 0;
-    voltTwinkleSound.play();
-    voltScore++;
-    voltScoreDisplay.textContent = "Score: " + voltScore;
+    hitSound.currentTime = 0;
+    hitSound.play();
+    Score_Hit++;
+    scoreDisplay.textContent = Score_Hit;
 
-    voltExplosion.x = voltStar.x;
-    voltExplosion.y = voltStar.y;
-    voltExplosion.active = true;
-    voltExplosion.timer = setTimeout(() => {
-      voltExplosion.active = false;
+    moleHit.x = Mole.x;
+    moleHit.y = Mole.y;
+    moleHit.active = true;
+    moleHit.timer = setTimeout(() => {
+      moleHit.active = false;
     }, 2000);
 
-    resetStar();
-    voltInterval = Math.max(250, voltInterval - 12.5); 
+    resetGame();
+    interval = Math.max(250, interval - 12.5); 
   }
 });
 
 function draw() {
-  voltCtx.clearRect(0, 0, voltCanvas.width, voltCanvas.height);
+  ctx.clearRect(0, 0, Canvas.width, Canvas.height);
 
-  voltCtx.drawImage(voltStarGif, voltStar.x, voltStar.y, voltStar.width, voltStar.height);
+  ctx.drawImage(moleGif, Mole.x, Mole.y, Mole.width, Mole.height);
 
-  if (voltExplosion.active) {
-    voltCtx.drawImage(voltExplosionGif, voltExplosion.x, voltExplosion.y, voltStar.width, voltStar.height);
+  if (moleHit.active) {
+    ctx.drawImage(mole_hit_gif, moleHit.x, moleHit.y, Mole.width, Mole.height);
   }
 
   setTimeout(() => {
-    resetStar();
+    resetGame();
     requestAnimationFrame(draw);
-  }, voltInterval);
+  }, interval);
 }
 
-voltStarGif.onload = () => {
+moleGif.onload = () => {
   draw();
 };
 
