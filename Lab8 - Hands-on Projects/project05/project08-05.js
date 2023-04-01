@@ -5,7 +5,7 @@
 
       Interface to replay a chess game stored in a JSON file
       Author: Carl Kevin Gasal
-      Date:   03 - 30 - 2023
+      Date:   04 - 01 - 2023
 
       Filename: project08-05.js
 */
