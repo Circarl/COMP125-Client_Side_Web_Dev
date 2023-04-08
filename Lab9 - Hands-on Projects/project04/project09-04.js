@@ -4,8 +4,8 @@
       Project 09-04
 
       Project to store high scores from a game in a cookie
-      Author: 
-      Date:   
+      Author: Carl Kevin Gasal
+      Date:   04 - 08 - 2023
 
       Filename: project09-04.js
 */

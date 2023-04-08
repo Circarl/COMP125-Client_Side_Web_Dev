@@ -4,8 +4,8 @@
       Project 09-03
 
       Project to retrieve date of last visit from web storage and mark new article
-      Author: 
-      Date:   
+      Author: Carl Kevin Gasal
+      Date:   04 - 08 - 2023
 
       Filename: project09-03.js
 */
