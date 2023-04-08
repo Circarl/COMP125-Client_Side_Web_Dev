@@ -4,8 +4,8 @@
       Project 09-05
 
       Project to add orders to shopping cart web storage
-      Author: 
-      Date:   
+      Author: Carl Kevin Gasal
+      Date:   04 - 08 - 2023
 
       Filename: cart.js
 */

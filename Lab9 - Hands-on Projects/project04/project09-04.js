@@ -23,8 +23,6 @@ window.addEventListener("load", function() {
       bestText.textContent = getBestTime() + " seconds";
    }
 });
-
-
 function getBestTime() {
    if (document.cookie) {
       let cookieArray = document.cookie.split("=");
@@ -33,7 +31,6 @@ function getBestTime() {
       return 9999;
    }
 }
-
 function updateRecord() {
    let solutionTime = parseInt(document.getElementById("timer").value);
    
@@ -42,7 +39,6 @@ function updateRecord() {
    if (solutionTime < bestTime) {
       bestTime = solutionTime;
    }
-   
    bestText.textContent = bestTime + " seconds";
    document.cookie = "puzzle8Best=" + bestTime + "; max-age=" + 60*60*24*90; 
 }

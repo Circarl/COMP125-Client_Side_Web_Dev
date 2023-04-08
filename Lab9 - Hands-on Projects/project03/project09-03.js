@@ -14,7 +14,6 @@
 
 let lastVisitDate = document.getElementById("lastVisitDate");
 let articleDates = document.getElementsByClassName("posttime");
-
 if (localStorage.sbloggerVisit) {
    let storedLastDate = localStorage.getItem("sbloggerVisit");
    lastVisitDate.textContent = storedLastDate;  
@@ -31,7 +30,6 @@ if (localStorage.sbloggerVisit) {
       items.innerHTML += "<strong>NEW</strong>";
    }
 }
-
 let currentDate = new Date("9/12/2024");
 localStorage.setItem("sbloggerVisit", currentDate.toLocaleDateString());
 
