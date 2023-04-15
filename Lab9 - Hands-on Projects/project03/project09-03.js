@@ -13,7 +13,7 @@
 /* Page Objects */
 
 let lastVisitDate = document.getElementById("lastVisitDate");
-let articleDates = document.getElementsByClassName("posttime");
+let articleDates = document.getElementsByClassName("posttime"); 
 if (localStorage.sbloggerVisit) {
    let storedLastDate = localStorage.getItem("sbloggerVisit");
    lastVisitDate.textContent = storedLastDate;  
