@@ -5,8 +5,8 @@
 
     Crossword Puzzle Functions
     
-    Author: 
-    Date:   
+      Author: Carl Kevin Gasal
+      Date:  04 - 16 - 2023 
 
     Filename: cross.js
 

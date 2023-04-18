@@ -4,8 +4,8 @@
       Project 10-01
 
       Project to create a drag and drop jigsaw puzzle
-      Author: 
-      Date:   
+      Author: Carl Kevin Gasal
+      Date:  04 - 16 - 2023 
 
       Filename: project10-01.js
 */
