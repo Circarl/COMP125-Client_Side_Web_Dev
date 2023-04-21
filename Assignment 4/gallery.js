@@ -26,12 +26,24 @@
   }
 
   setInterval(nextSlide, 2000);
-
+  //next button
   var next = document.querySelector('.next');
   next.addEventListener('click', nextSlide);
 
+  //previous button
   var prev = document.querySelector('.prev');
   prev.addEventListener('click', prevSlide);
+
+  //play&pause button
+  var playPause = document.querySelector('.play-pause');
+  playPause.addEventListener('click', function() {
+  isPlaying = !isPlaying;
+  if (isPlaying) {
+    playPause.textContent = "Pause";
+  } else {
+    playPause.textContent = "Play";
+  }
+});
 
   function loopGallery(test, index, item) {
     if (test) {
@@ -74,3 +86,12 @@
     });
   });
 })(jQuery);
+$.ajax('photos.js', {
+  dataType: "script",
+  success: function() {
+    galleryItems.forEach(function(item) {
+      loopGallery(true, item.id, item);
+    });
+  }
+});
+
