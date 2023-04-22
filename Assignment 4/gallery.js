@@ -3,79 +3,141 @@ var imageListCKG = [];
 var durationListCKG = [];
 var titleListCKG = [];
 var currentIndexCKG = 0;
-var autoChangeInterval;
+var autoChangeIntervalCKG;
 
 // Function to load image list from JSON file using AJAX
 function loadImageList() {
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "photos.json", true);
   xhr.onreadystatechange = function () {
-      if (xhr.readyState === XMLHttpRequest.DONE) {
-          if (xhr.status === 200) {
-              try {
-                  var data = JSON.parse(xhr.responseText);
-                  imageListCKG = data.images;
-                  durationListCKG = data.duration;
-                  titleList = data.titles;
-                  showImage(currentIndexCKG);
-                  showImageInGallery();
-                  showInfo(currentIndexCKG);
-                  startAutoChange();
-              } catch (error) {
-                  console.error("Failed to parse image list:", error);
-              }
-          } else {
-              console.error("Failed to load image list. Status:", xhr.status);
-          }
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        try {
+          var data = JSON.parse(xhr.responseText);
+          imageListCKG = data.images;
+          durationListCKG = data.duration;
+          titleListCKG = data.titles;
+          showImage(currentIndexCKG);
+          showImageInGallery();
+          showInfo(currentIndexCKG);
+          startAutoChange();
+        } catch (error) {
+          console.error("Failed to parse image list:", error);
+        }
+      } else {
+        console.error("Failed to load image list. Status:", xhr.status);
       }
+    }
   };
   xhr.send();
 }
+
+
 // Load image list when page loads
 loadImageList();
 
 function showImage(index) {
-  var image = document.getElementById("current-image");
-  image.src = imageListCKG[index];
+  var image = $("#current-image");
+  image.fadeOut(500, function() {
+    image.attr("src", imageListCKG[index]).fadeIn(500);
+  });
 }
+
 function showInfo(index) {
-  var durationBox = document.getElementById("durationBox");
-  durationBox.innerHTML = "\"" + titleList[index] + "\" image in " + durationListCKG[index] + " seconds";
+  var captionBoxCKG = document.getElementById("caption-box");
+  captionBoxCKG.innerHTML = "\"" + titleListCKG[index] + "\" image in " + durationListCKG[index] + " seconds";
 }
 
 // Function to show image at gallery
 function showImageInGallery() {
-  document.getElementById("imgGallery1").src = imageListCKG[0];
-  document.getElementById("imgGallery2").src = imageListCKG[1];
-  document.getElementById("imgGallery3").src = imageListCKG[2];
-  document.getElementById("imgGallery4").src = imageListCKG[3];
-  document.getElementById("imgGallery5").src = imageListCKG[4];
-  document.getElementById("imgGallery6").src = imageListCKG[5];
+  var images = document.getElementsByClassName("imgGallery");
+  for (var i = 0; i < images.length; i++) {
+    images[i].src = imageListCKG[i];
+    images[i].addEventListener("click", function() {
+      // Remove active class from all images
+      for (var j = 0; j < images.length; j++) {
+        images[j].classList.remove("active");
+      }
+      // Add active class to clicked image
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+      this.classList.add("active");
+      // Show clicked image in slideshow
+      var index = Array.prototype.indexOf.call(images, this);
+      showImage(index);
+      showInfo(index);
+      startAutoChange();
+    });
+  }
 }
+
 
 // ==================================================== //
 
 // Function to show previous image
-function showPrevious() {
-  currentIndexCKG = (currentIndexCKG - 1 + imageListCKG.length) % imageListCKG.length;
+function showNext() {
+  currentIndexCKG = (currentIndexCKG + 1) % imageListCKG.length;
+  var prevActiveImage = document.querySelector(".active");
+  prevActiveImage.classList.remove("active", "fade-out");
+  var activeImage = document.querySelector("#imgGallery" + (currentIndexCKG + 1));
+  activeImage.classList.add("active");
+  setTimeout(function() {
+    activeImage.classList.add("fade-out");
+  }, 10);
   showImage(currentIndexCKG);
   showInfo(currentIndexCKG);
 }
 
-// Function to show next image
-function showNext() {
-  currentIndexCKG = (currentIndexCKG + 1) % imageListCKG.length;
+function showPrevious() {
+  currentIndexCKG = (currentIndexCKG - 1 + imageListCKG.length) % imageListCKG.length;
+  var prevActiveImage = document.querySelector(".active");
+  prevActiveImage.classList.remove("active", "fade-out");
+  var activeImage = document.querySelector("#imgGallery" + (currentIndexCKG + 1));
+  activeImage.classList.add("active");
+  setTimeout(function() {
+    activeImage.classList.add("fade-out");
+  }, 10);
   showImage(currentIndexCKG);
   showInfo(currentIndexCKG);
 }
+
 
 // Function to start interval for automatically changing images
 function startAutoChange() {
-  clearInterval(autoChangeInterval);
-  var duration = imageListCKG[currentIndexCKG].duration || 2000;
-  autoChangeInterval = setInterval(showNext, duration);
-  // timeChangeInterval = setInterval(timer, duration);
+  clearInterval(autoChangeIntervalCKG);
+  var duration = durationListCKG[currentIndexCKG] || 5;
+  var image = document.getElementById("current-image");
+  image.style.opacity = 0;
+  autoChangeIntervalCKG = setInterval(function() {
+    currentIndexCKG = (currentIndexCKG + 1) % imageListCKG.length;
+    image.src = imageListCKG[currentIndexCKG];
+    showInfo(currentIndexCKG);
+    image.style.opacity = 1;
+    setTimeout(function() {
+      image.style.opacity = 0;
+    }, (duration - 1) * 1000);
+  }, duration * 1000);
 }
+
 
 // Event listener for previous button
 document.getElementById("prev").addEventListener("click", function () {

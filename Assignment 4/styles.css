@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
 
 body {
-    background-color: #56BAEC;
+    background: linear-gradient(to right, #FFEC94, #B4D8E7, #56BAEC);
     font-family: 'Press Start 2P', cursive;
     color: #FFF0AA;
 }
@@ -12,7 +10,7 @@ header {
     font-size: large;
     color: #FFEC94;
     padding-top: 1%;
-    padding-bottom: 2%;
+    padding-bottom: 1%;
 }
 
 #current-image-container {
@@ -41,9 +39,11 @@ header {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   cursor: pointer;
 }
+.active {
+  border: 2px solid #FFEC94;
+}
 
-
-#durationBox {
+#caption-box {
     font-size: 16px;
     color: whitesmoke;
     text-align: center;
@@ -95,6 +95,7 @@ header {
 .btn-group .button {
   background-color: #FFF0AA; /* Green */
   border: 1px solid #FFAEAE;
+  border-radius: 10px;
   color: #56BAEC;
   padding: 15px 32px;
   text-align: center;
