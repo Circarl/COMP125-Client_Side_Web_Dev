@@ -1,6 +1,7 @@
-var imageList = [];
-var durationList = [];
-var titleList = [];
+//CKG = Carl Kevin Gasal
+var imageListCKG = [];
+var durationListCKG = [];
+var titleListCKG = [];
 var currentIndex = 0;
 var autoChangeInterval;
 
@@ -13,8 +14,8 @@ function loadImageList() {
           if (xhr.status === 200) {
               try {
                   var data = JSON.parse(xhr.responseText);
-                  imageList = data.images;
-                  durationList = data.duration;
+                  imageListCKG = data.images;
+                  durationListCKG = data.duration;
                   titleList = data.titles;
                   showImage(currentIndex);
                   showImageInGallery();
@@ -35,35 +36,35 @@ loadImageList();
 
 function showImage(index) {
   var image = document.getElementById("current-image");
-  image.src = imageList[index];
+  image.src = imageListCKG[index];
 }
 function showInfo(index) {
   var durationBox = document.getElementById("durationBox");
-  durationBox.innerHTML = "This \"" + titleList[index] + "\" picture is available in " + durationList[index] + " seconds";
+  durationBox.innerHTML = "\"" + titleList[index] + "\" image in " + durationListCKG[index] + " seconds";
 }
 
 // Function to show image at gallery
 function showImageInGallery() {
-  document.getElementById("imgGallery1").src = imageList[0];
-  document.getElementById("imgGallery2").src = imageList[1];
-  document.getElementById("imgGallery3").src = imageList[2];
-  document.getElementById("imgGallery4").src = imageList[3];
-  document.getElementById("imgGallery5").src = imageList[4];
-  document.getElementById("imgGallery6").src = imageList[5];
+  document.getElementById("imgGallery1").src = imageListCKG[0];
+  document.getElementById("imgGallery2").src = imageListCKG[1];
+  document.getElementById("imgGallery3").src = imageListCKG[2];
+  document.getElementById("imgGallery4").src = imageListCKG[3];
+  document.getElementById("imgGallery5").src = imageListCKG[4];
+  document.getElementById("imgGallery6").src = imageListCKG[5];
 }
 
 // ==================================================== //
 
 // Function to show previous image
 function showPrevious() {
-  currentIndex = (currentIndex - 1 + imageList.length) % imageList.length;
+  currentIndex = (currentIndex - 1 + imageListCKG.length) % imageListCKG.length;
   showImage(currentIndex);
   showInfo(currentIndex);
 }
 
 // Function to show next image
 function showNext() {
-  currentIndex = (currentIndex + 1) % imageList.length;
+  currentIndex = (currentIndex + 1) % imageListCKG.length;
   showImage(currentIndex);
   showInfo(currentIndex);
 }
@@ -71,7 +72,7 @@ function showNext() {
 // Function to start interval for automatically changing images
 function startAutoChange() {
   clearInterval(autoChangeInterval);
-  var duration = imageList[currentIndex].duration || 2000;
+  var duration = imageListCKG[currentIndex].duration || 2000;
   autoChangeInterval = setInterval(showNext, duration);
   // timeChangeInterval = setInterval(timer, duration);
 }

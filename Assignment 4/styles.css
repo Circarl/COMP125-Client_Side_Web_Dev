@@ -1,53 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-#tv-screen {
-    padding: 30px 30px 30px 30px;
-    margin: 30px 30px 10px 30px;
-    border: 5px solid #6b1c4e;
-    height: 75vh;
-    border-radius: 15%;
-    background-color: rgb(53, 52, 52);
-}
 
 body {
-    background-color: #e77e23;
+    background-color: #56BAEC;
     font-family: 'Press Start 2P', cursive;
+    color: #FFF0AA;
 }
 
 header {
     text-align: center;
     font-size: large;
-    color: whitesmoke;
-}
-
-#btn-container {
-    display: flex;
-}
-
-#btn-function-container {
-    display: flex;
-    justify-content: center;
-}
-
-#prev,
-#next,
-#play-pause {
-    background-color: #fed176;
-    color: #6b1c4e;
-    border: 2px solid #6b1c4e;
-    width: 100px;
-    height: 50px;
-    cursor: pointer;
-    border-radius: 20%;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 8px;
-    margin: 20px 20px 0 20px;
+    color: #FFEC94;
+    padding-top: 1%;
+    padding-bottom: 2%;
 }
 
 #current-image-container {
     width: fit-content;
-    height: 450px;
+    height: 550px;
     margin: 20px auto 10px auto;
+    border: 2px solid white;
 }
 
 #current-image-container img {
@@ -55,20 +27,88 @@ header {
     max-height: 100%;
 }
 
-.imgGallery {
-    width: 100px;
-    height: 100px;
-    margin-left: 10px;
+#image-container {
+  display: flex;
+  justify-content: center;
 }
 
-#image-container {
-    width: fit-content;
-    margin: 0 auto 0 auto;
+.imgGallery {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin: 0 5px;
+  border: 2px solid white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
+
 
 #durationBox {
-    font-size: 9px;
+    font-size: 16px;
     color: whitesmoke;
     text-align: center;
     margin: 30px;
+}
+
+.controls-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px; 
+  width: 200px;
+  height: 50px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  border: 2px solid red;
+}
+
+.controls > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33.33%;
+  height: 100%;
+  cursor: pointer;
+}
+.controls div {
+  font-size: 9px; /* Change font size of buttons */
+}
+
+.controls > div:hover {
+  background-color: #a82b2b;
+}
+
+.controls #play-pause {
+  width: 34%;
+}
+
+.controls #play-pause:hover {
+  background-color: #fff;
+}
+.btn-group .button {
+  background-color: #FFF0AA; /* Green */
+  border: 1px solid #FFAEAE;
+  color: #56BAEC;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-group .button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+.btn-group .button:hover {
+  background-color: #B4D8E7;
+  color: #FFEC94;
 }
