@@ -2,7 +2,7 @@
 var imageListCKG = [];
 var durationListCKG = [];
 var titleListCKG = [];
-var currentIndex = 0;
+var currentIndexCKG = 0;
 var autoChangeInterval;
 
 // Function to load image list from JSON file using AJAX
@@ -17,9 +17,9 @@ function loadImageList() {
                   imageListCKG = data.images;
                   durationListCKG = data.duration;
                   titleList = data.titles;
-                  showImage(currentIndex);
+                  showImage(currentIndexCKG);
                   showImageInGallery();
-                  showInfo(currentIndex);
+                  showInfo(currentIndexCKG);
                   startAutoChange();
               } catch (error) {
                   console.error("Failed to parse image list:", error);
@@ -57,22 +57,22 @@ function showImageInGallery() {
 
 // Function to show previous image
 function showPrevious() {
-  currentIndex = (currentIndex - 1 + imageListCKG.length) % imageListCKG.length;
-  showImage(currentIndex);
-  showInfo(currentIndex);
+  currentIndexCKG = (currentIndexCKG - 1 + imageListCKG.length) % imageListCKG.length;
+  showImage(currentIndexCKG);
+  showInfo(currentIndexCKG);
 }
 
 // Function to show next image
 function showNext() {
-  currentIndex = (currentIndex + 1) % imageListCKG.length;
-  showImage(currentIndex);
-  showInfo(currentIndex);
+  currentIndexCKG = (currentIndexCKG + 1) % imageListCKG.length;
+  showImage(currentIndexCKG);
+  showInfo(currentIndexCKG);
 }
 
 // Function to start interval for automatically changing images
 function startAutoChange() {
   clearInterval(autoChangeInterval);
-  var duration = imageListCKG[currentIndex].duration || 2000;
+  var duration = imageListCKG[currentIndexCKG].duration || 2000;
   autoChangeInterval = setInterval(showNext, duration);
   // timeChangeInterval = setInterval(timer, duration);
 }
