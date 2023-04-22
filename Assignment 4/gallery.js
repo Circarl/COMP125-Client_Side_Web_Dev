@@ -1,97 +1,94 @@
-(function($) {
-  var slides = document.querySelector('.slides');
-  var slideWidth = document.querySelector('.slides img').clientWidth;
-  let slideIndex = 0;
+var imageList = [];
+var durationList = [];
+var titleList = [];
+var currentIndex = 0;
+var autoChangeInterval;
 
-  function slide() {
-    slides.style.transform = `translateX(-${slideWidth * slideIndex}px)`;
-  }
-
-  function nextSlide() {
-    if (slideIndex === 2) {
-      slideIndex = 0;
-    } else {
-      slideIndex++;
-    }
-    slide();
-  }
-
-  function prevSlide() {
-    if (slideIndex === 0) {
-      slideIndex = 2;
-    } else {
-      slideIndex--;
-    }
-    slide();
-  }
-
-  setInterval(nextSlide, 2000);
-  //next button
-  var next = document.querySelector('.next');
-  next.addEventListener('click', nextSlide);
-
-  //previous button
-  var prev = document.querySelector('.prev');
-  prev.addEventListener('click', prevSlide);
-
-  //play&pause button
-  var playPause = document.querySelector('.play-pause');
-  playPause.addEventListener('click', function() {
-  isPlaying = !isPlaying;
-  if (isPlaying) {
-    playPause.textContent = "Pause";
-  } else {
-    playPause.textContent = "Play";
-  }
-});
-
-  function loopGallery(test, index, item) {
-    if (test) {
-      var box = $('<div class="col-md-4 box_animaux box-'+index+'"></div>');
-      var pola = $('<div class="pola"></div>');
-      var view = $('<div class="view thumb"></div>');
-      var mask = $(`<div class="mask"><h2>${item.name}</h2><p>${item.description}</p><a href="${item.source}" class="info fancybox" rel="group" title="${item.id}" ><div class="alt">Voir</div></a></div>`)
-
-      $('.gallery').prepend(box);
-      box.append(pola);
-      pola.append(view);
-      view.prepend(`<img src="${item.source}">`);
-      view.append(mask);
-    }
-  }
-
-  $.getJSON('json/photos.json', function(data) {
-    $.each(data, function(index, item) {
-      loopGallery(index <= 2, index, item);
-    });
-  });
-
-  $('.next').on('click', function(event) {
-    event.preventDefault();
-    var galleryLength = $('.pola').length;
-    $.ajax('json/photos.json', {
-      success: function(data) {
-        $.each(data, function(index, item) {
-          loopGallery(item.id >= galleryLength && item.id < galleryLength + 3, index, item);
-        });
-      },
-      beforeSend: function() {
-        $('.next').hide();
-        $('.spinner').fadeIn();
-      },
-      complete: function() {
-        $('.spinner').hide();
-        $('.next').fadeIn();
+// Function to load image list from JSON file using AJAX
+function loadImageList() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "photos.json", true);
+  xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+              try {
+                  var data = JSON.parse(xhr.responseText);
+                  imageList = data.images;
+                  durationList = data.duration;
+                  titleList = data.titles;
+                  showImage(currentIndex);
+                  showImageInGallery();
+                  showInfo(currentIndex);
+                  startAutoChange();
+              } catch (error) {
+                  console.error("Failed to parse image list:", error);
+              }
+          } else {
+              console.error("Failed to load image list. Status:", xhr.status);
+          }
       }
-    });
-  });
-})(jQuery);
-$.ajax('photos.js', {
-  dataType: "script",
-  success: function() {
-    galleryItems.forEach(function(item) {
-      loopGallery(true, item.id, item);
-    });
-  }
+  };
+  xhr.send();
+}
+// Load image list when page loads
+loadImageList();
+
+function showImage(index) {
+  var image = document.getElementById("current-image");
+  image.src = imageList[index];
+}
+function showInfo(index) {
+  var durationBox = document.getElementById("durationBox");
+  durationBox.innerHTML = "This \"" + titleList[index] + "\" picture is available in " + durationList[index] + " seconds";
+}
+
+// Function to show image at gallery
+function showImageInGallery() {
+  document.getElementById("imgGallery1").src = imageList[0];
+  document.getElementById("imgGallery2").src = imageList[1];
+  document.getElementById("imgGallery3").src = imageList[2];
+  document.getElementById("imgGallery4").src = imageList[3];
+  document.getElementById("imgGallery5").src = imageList[4];
+  document.getElementById("imgGallery6").src = imageList[5];
+}
+
+// ==================================================== //
+
+// Function to show previous image
+function showPrevious() {
+  currentIndex = (currentIndex - 1 + imageList.length) % imageList.length;
+  showImage(currentIndex);
+  showInfo(currentIndex);
+}
+
+// Function to show next image
+function showNext() {
+  currentIndex = (currentIndex + 1) % imageList.length;
+  showImage(currentIndex);
+  showInfo(currentIndex);
+}
+
+// Function to start interval for automatically changing images
+function startAutoChange() {
+  clearInterval(autoChangeInterval);
+  var duration = imageList[currentIndex].duration || 2000;
+  autoChangeInterval = setInterval(showNext, duration);
+  // timeChangeInterval = setInterval(timer, duration);
+}
+
+// Event listener for previous button
+document.getElementById("prev").addEventListener("click", function () {
+  showPrevious();
+  startAutoChange();
 });
 
+// Event listener for next button
+document.getElementById("next").addEventListener("click", function () {
+  showNext();
+  startAutoChange();
+});
+
+// Event listener for update button
+document.getElementById("play-pause").addEventListener("click", function () {
+  loadImageList();
+});
