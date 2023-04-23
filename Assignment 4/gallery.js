@@ -32,7 +32,6 @@ function loadImageList() {
   xhr.send();
 }
 
-
 // Load image list when page loads
 loadImageList();
 
@@ -59,27 +58,6 @@ function showImageInGallery() {
         images[j].classList.remove("active");
       }
       // Add active class to clicked image
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
       this.classList.add("active");
       // Show clicked image in slideshow
       var index = Array.prototype.indexOf.call(images, this);
@@ -89,7 +67,6 @@ function showImageInGallery() {
     });
   }
 }
-
 
 // ==================================================== //
 
@@ -120,7 +97,6 @@ function showPrevious() {
   showInfo(currentIndexCKG);
 }
 
-
 // Function to start interval for automatically changing images
 function startAutoChange() {
   clearInterval(autoChangeIntervalCKG);
@@ -138,7 +114,6 @@ function startAutoChange() {
   }, duration * 1000);
 }
 
-
 // Event listener for previous button
 document.getElementById("prev").addEventListener("click", function () {
   showPrevious();
@@ -152,6 +127,6 @@ document.getElementById("next").addEventListener("click", function () {
 });
 
 // Event listener for update button
-document.getElementById("play-pause").addEventListener("click", function () {
+document.getElementById("update").addEventListener("click", function () {
   loadImageList();
 });
