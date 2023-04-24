@@ -1,45 +1,122 @@
-.slideshow {
-    margin-bottom: auto;
-    margin: auto;
-    position: relative;
-    width: 720px;
-    height: 500px;
-    overflow: hidden;
-    border: solid 1px red;
-  }
-  
-  .slides {
-    position: absolute;
-    width: 300%;
-    height: 100%;
-    display: flex;
-  }
-  
-  .slides img {
-    width: 33.333%;
-    height: 100%;
-  }
-  
-  .controls {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-  }
-  
-  .prev,
-  .next {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    font-size: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 10px;
-    cursor: pointer;
-  }
-  
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url(MagicHoliday.otf);
+}
+body {
+    background: linear-gradient(to right, #FFEC94, #B4D8E7, #56BAEC);
+    font-family: 'Press Start 2P', cursive;
+    color: #FFF0AA;
+}
+
+header {
+    font-family: 'MyCustomFont', sans-serif;
+    text-align: center;
+    font-size: 65px;
+    color: white;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    text-shadow: 2px 2px 2px #000;
+}
+
+#current-image-container {
+    width: fit-content;
+    height: 550px;
+    margin: 20px auto 10px auto;
+    border: 2px solid white;
+}
+
+#current-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#image-container {
+  display: flex;
+  justify-content: center;
+}
+
+.imgGallery {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin: 0 5px;
+  border: 2px solid white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+.active {
+  border: 2px solid #FFEC94;
+}
+
+#caption-box {
+    font-family: 'MyCustomFont', sans-serif;
+    font-size: 22px;
+    color:#fff;
+    text-align: center;
+    margin: 30px;
+    text-shadow: 1px 1px 1px #000;
+}
+
+.controls-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px; 
+  width: 200px;
+  height: 50px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  border: 2px solid red;
+}
+
+.controls > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33.33%;
+  height: 100%;
+  cursor: pointer;
+}
+.controls div {
+  font-size: 9px; /* Change font size of buttons */
+}
+
+.controls > div:hover {
+  background-color: #a82b2b;
+}
+
+.controls #play-pause {
+  width: 34%;
+}
+
+.controls #play-pause:hover {
+  background-color: #fff;
+}
+.btn-group .button {
+  background-color: #FFF0AA; /* Green */
+  border: 1px solid #FFAEAE;
+  border-radius: 10px;
+  color: #56BAEC;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-group .button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+.btn-group .button:hover {
+  background-color: #B4D8E7;
+  color: #FFEC94;
+}

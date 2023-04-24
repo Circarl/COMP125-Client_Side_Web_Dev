@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,23 +7,33 @@
     <link rel="stylesheet" href="styles.css">
     <script src="gallery.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>Document</title>
+    <title>Assignment 4: Newborn Photoshoot Gallery</title>
 </head>
 <body>
     <h1></h1>
     <div class="slideshow">
-        <div class="slides">
-          <img src="images/IMG (1).JPEG">
-          <img src="images/IMG (2).JPEG">
-          <img src="images/IMG (3).JPEG">
-          <img src="images/IMG (4).JPEG">
-          <img src="images/IMG (5).JPEG">
-        </div>
-        <div class="controls">
-          <div class="prev"><</div>
-          <div class="next">></div>
-        </div>
-      </div>
+      <header>Newborn Photoshoot Gallery</header>
+      <div id="current-image-container">
+        <img id="current-image" src="" alt="Image">
+    </div>
+    <br>
+    <div id="image-container">
+      <img class="imgGallery" id="imgGallery1" src="">
+      <img class="imgGallery" id="imgGallery2" src="">
+      <img class="imgGallery" id="imgGallery3" src="">
+      <img class="imgGallery" id="imgGallery4" src="">
+      <img class="imgGallery" id="imgGallery5" src="">
+      <img class="imgGallery" id="imgGallery6" src="">
+      <img class="imgGallery" id="imgGallery7" src="">
+  </div>
+  <div id="caption-box"></div>
+  <div class="controls-container">
+    <div class="btn-group">
+      <button class="button" id="prev">< Prev </button>
+      <button class="button" id="update">Update</button>
+      <button class="button" id="next">Next ></button>
+    </div>
+  </div>  
     </div>
 </body>
 </html>
