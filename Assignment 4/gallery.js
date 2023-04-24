@@ -1,4 +1,5 @@
-//CKG = Carl Kevin Gasal
+// CKG = Carl Kevin Gasal
+// COMP125 Winter 2023
 var imageListCKG = [];
 var durationListCKG = [];
 var titleListCKG = [];
